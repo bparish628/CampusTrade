@@ -13,3 +13,6 @@ To run the application run the following command
     
 ## Submission of code
 To submit code, please create a branch and make your edits in that branch. When it is complete, submit a pull request to develop. We will review it and if it's good, we will merge it.
+
+# License
+This project is licensed under the Creative Commons Attribution NonCommercial NoDerivs (CC-NC-ND).
