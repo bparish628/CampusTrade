@@ -26,14 +26,14 @@ var cssFilesToInject = [
 var jsFilesToInject = [
 
   // Load sails.io before everything else
-  'js/dependencies/sails.io.js',
+  'dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
-  'js/dependencies/**/*.js',
+  'dependencies/**/*.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'js/**/*.js'
+  'src/**/*.js'
 ];
 
 
@@ -47,17 +47,15 @@ var jsFilesToInject = [
 // templates get spit out to the same file.  Be sure and check out `tasks/README.md`
 // for information on customizing and installing new tasks.
 var templateFilesToInject = [
-  'templates/**/*.html'
+  
 ];
-
-
-
-
-
-
 
 // Default path for public folder (see documentation for more information)
 var tmpPath = '.tmp/public/';
+
+module.exports.cssFilesToInject = cssFilesToInject.map(path => `.tmp/public/${path}`);
+module.exports.jsFilesToInject = jsFilesToInject.map(path => `.tmp/public/${path}`);
+module.exports.templateFilesToInject = templateFilesToInject.map(path => `assets/${path}`);
 
 // Prefix relative paths to source files so they point to the proper locations
 // (i.e. where the other Grunt tasks spit them out, or in some cases, where
