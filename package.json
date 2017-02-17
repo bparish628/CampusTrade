@@ -1,7 +1,7 @@
 {
   "name": "campus-trade",
   "author": "Benjamin Parish",
-  "license": "Creative Commons Attribution NonCommercial NoDerivs (CC-NC-ND)",
+  "license": "CC-BY-NC-ND-4.0",
   "version": "0.1.0",
   "description": "An application to buy, sell, and trade books",
   "keywords": [],
@@ -37,8 +37,10 @@
     "yargs": "^6.6.0"
   },
   "scripts": {
-    "debug": "node debug app.js",
-    "start": "gulp && node webpack.server.js"
+    "prestart": "npm prune && npm install && npm --prefix server install server",
+    "start": "gulp && node webpack.server.js",
+    "start-server": "npm run server-install && node server/app.js",
+    "server-install": "(cd server && npm install)"
   },
   "main": "app.js",
   "repository": {
