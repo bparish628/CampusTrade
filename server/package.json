@@ -6,12 +6,17 @@
   "description": "This is the server that will host all the api's for campus trade",
   "keywords": [],
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "ejs": "2.5.6",
     "forever": "0.15.3",
     "include-all": "^1.0.0",
+    "passport": "^0.3.2",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0",
     "rc": "1.0.1",
     "sails": "~0.12.11",
-    "sails-disk": "~0.10.10"
+    "sails-disk": "~0.10.10",
+    "validator": "^6.2.1"
   },
   "scripts": {
     "debug": "node debug app.js",
