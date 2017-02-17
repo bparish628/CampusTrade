@@ -18,7 +18,6 @@ const baseConfig = {
     modules: [
       path.resolve('./client/src'),
       path.resolve('./client/assets'),
-      path.resolve('./client/templates'),
       path.resolve('./node_modules')
     ],
     extensions: ['.js']
@@ -29,8 +28,7 @@ const baseConfig = {
       {
         test: /\.js$/,
         include: [
-          path.resolve(__dirname, 'client/src'),
-          path.resolve(__dirname, 'client/tests')
+          path.resolve(__dirname, 'client/src')
         ],
         loader: 'babel-loader'
       },
@@ -42,8 +40,7 @@ const baseConfig = {
         test: /\.(le|c)ss$/,
         use: ['style-loader', 'css-loader', 'less-loader']
       }
-    ],
-    noParse: [ /sinon.js/ ]
+    ]
   },
 
   plugins: [
