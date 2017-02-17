@@ -1,5 +1,10 @@
 # CampusTrade
 
+branch | status
+---    | ---
+master | [![Build Status](https://travis-ci.org/bparish628/CampusTrade.svg?branch=master)](https://travis-ci.org/bparish628/CampusTrade)
+develop| [![Build Status](https://travis-ci.org/bparish628/CampusTrade.svg?branch=develop)](https://travis-ci.org/bparish628/CampusTrade)
+
 ## Installing Dependencies
 Before you can run this application you will need to install the latest node (nodejs.org).
 Once node is installed then run the following command to install needed libraries
