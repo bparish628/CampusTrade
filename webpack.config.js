@@ -5,7 +5,7 @@ const { argv } = require('yargs');
 
 const baseConfig = {
   entry: {
-    app: ['./client/src/main.js']
+    app: ['./client/src/main.module.js']
   },
 
   output: {
@@ -20,7 +20,7 @@ const baseConfig = {
       path.resolve('./client/assets'),
       path.resolve('./node_modules')
     ],
-    extensions: ['.js']
+    extensions: ['.js', '.html']
   },
 
   module: {
@@ -37,9 +37,11 @@ const baseConfig = {
         loader: 'html-loader'
       },
       {
-        test: /\.(le|c)ss$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
-      }
+        test: /\.(scss)$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader:"url-loader?limit=10000&mimetype=application/font-woff" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
     ]
   },
 
