@@ -20,7 +20,7 @@ const baseConfig = {
       path.resolve('./client/assets'),
       path.resolve('./node_modules')
     ],
-    extensions: ['.js']
+    extensions: ['.js', '.html']
   },
 
   module: {
