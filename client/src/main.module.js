@@ -4,6 +4,9 @@ import components from './components/components.module';
 import common from './common/common.module';
 import mainComponent from './main.component';
 
+// Styles
+import 'vendor/materialize/sass/materialize.scss';
+
 angular
   .module('campusTrade', [
     uiRouter,
