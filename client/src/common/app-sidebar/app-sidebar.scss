@@ -10,8 +10,22 @@ main, footer {
 
 .side-nav.fixed {
   margin-top: 64px;
-  .collapsible-header.active {
-    background-color: #009688;
+  .collapsible-header{
+    border: 1px solid #ddd !important;
+    &.active {
+      background-color: #009688;
+      color: #ddd;
+      border-bottom-color: #009688 !important;
+
+      &:hover {
+        background-color: #26a69a;
+        color: #000;
+      }
+    }
+  }
+
+  .sidebar-item {
+    border-bottom: .2px solid #607d8b !important;
   }
 
   .collapsible-body {
