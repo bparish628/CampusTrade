@@ -10,8 +10,15 @@ module.exports = {
   attributes: {
     name: {
       type: 'string',
-      required: true
+      required: true,
+      unique: true
     }
-  }
+  },
+
+  seedData: [
+    { name: 'Books' },
+    { name: 'Electronics' },
+    { name: 'Furniture' }
+  ]
 };
 
