@@ -20,6 +20,6 @@ angular
   .config(($locationProvider, $urlRouterProvider) => {
     'ngInject';
 
-    $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('');
   })
   .name;
