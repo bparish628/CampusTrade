@@ -11,6 +11,11 @@ const appSideBarComponent = {
       { name: 'My book' },
       { name: 'Physics 101' }
     ];
+
+    constructor(AuthService) {
+      'ngInject';
+      this.isAuthenticated = AuthService.isAuthenticated();
+    }
   }
 };
 
