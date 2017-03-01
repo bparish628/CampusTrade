@@ -9,6 +9,7 @@ const loginComponent = {
       this.authService = AuthService;
       this.$state = $state;
     }
+
     $onInit() {
       this.error = null;
       this.user = {
@@ -16,7 +17,8 @@ const loginComponent = {
         password: '',
       };
     }
-    createUser(user) {
+    
+    login(user) {
       return this.authService
         .register(user)
         .then(() => {

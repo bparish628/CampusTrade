@@ -1,0 +1,53 @@
+<div class="container card-margin">
+  <div class="row">
+    <div class="col s12">
+      <div class="card-panel teal lighten-5 hoverable">
+        <h3 class="blue-grey-text">Register</h3>
+        <form>
+          <div class="row">
+            <div class="input-field col s6">
+              <input class="validate" type="text" name="firstName" ng-model="$ctrl.user.firstName"/>
+              <label for="firstName">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input class="validate" type="text" name="lastName" ng-model="$ctrl.user.lastName"/>
+              <label for="lastName">Last Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input class="validate" type="email" name="email" ng-model="$ctrl.user.email"/>
+              <label for="email">Email Address</label>
+            </div>
+            <div class="input-field col s6">
+              <input 
+              input-date
+              class="datepicker"
+              name="dateOfBirth"
+              id="dateOfBirth"
+              type="date"
+              ng-model="$ctrl.user.dateOfBirth"
+              format="mm/dd/yyyy"
+              max="{{$ctrl.maxDate}}"
+              select-years="100"/>
+              <label for="dateOfBirth">Date of birth</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input class="validate" type="password" name="password" ng-model="$ctrl.user.password"/>
+              <label for="password">Password</label>
+            </div>
+            <div class="input-field col s6">
+              <input class="validate" type="password" name="confirmPassword" ng-model="$ctrl.user.confirmPassword"/>
+              <label for="confirmPassword">Confirm Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <a class="waves-effect waves-light btn right">Register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

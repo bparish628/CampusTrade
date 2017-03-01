@@ -2,6 +2,8 @@ import register from './register/register.module';
 import login from './login/login.module';
 import AuthService from './auth.service';
 
+import './auth.scss';
+
 const auth = angular
   .module('components.auth', [
     register,

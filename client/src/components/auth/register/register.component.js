@@ -1,26 +1,34 @@
+import moment from 'moment';
 import template from './register';
 
 const registerComponent = {
   template,
   controller: class RegisterComponent {
+
+    maxDate = moment().subtract(15, 'years').toISOString();
     constructor(AuthService, $state) {
       'ngInject';
 
       this.authService = AuthService;
       this.$state = $state;
     }
+
     $onInit() {
       this.error = null;
       this.user = {
+        firstName: '',
+        lastName: '',
         email: '',
-        password: '',
+        dateOfBirth: '',
+        password: ''
       };
     }
-    createUser(event) {
+
+    register() {
       return this.authService
-        .register(event.user)
+        .register(this.user)
         .then(() => {
-          this.$state.go('app');
+          this.$state.go('dashboard');
         }, reason => {
           this.error = reason.message;
         });
