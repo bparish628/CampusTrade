@@ -87,7 +87,7 @@ const resources = angular.module('app.resources', [ ngResource ])
         }
       };
 
-      return access;
+      return trade;
     }
   })
   .name;

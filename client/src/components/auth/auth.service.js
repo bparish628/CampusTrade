@@ -2,44 +2,34 @@ class AuthService {
 
   user = null;
 
-  constructor() {
-    this.authData = null;
-    // this.onSignIn = user => {
-    //   this.user = user;
-    //   return this.auth.$requireSignIn();
-    // };
-    this.storeAuthData = data => {
+  constructor($trade) {
+    'ngInject';
+
+    Object.assign(this, { $trade });
+    this.storeUser = data => {
       this.user = data;
       return this.user;
     };
-    this.clearAuthData = () => {
+    this.clearUser = () => {
       this.user = null;
     };
   }
 
-  // login(user) {
-  //   return this.auth
-  //     .$signInWithEmailAndPassword(user.email, user.password)
-  //     .then(this.storeAuthData);
-  // }
+  login(user) {
+    return this.$trade.update('login', user).then(this.storeUser);
+  }
 
-  // register(user) {
-  //   return this.auth
-  //     .$createUserWithEmailAndPassword(user.email, user.password)
-  //     .then(this.storeAuthData);
-  // }
+  logout() {
+    return this.$trade.remove('logout').then(this.clearUser);
+  }
 
-  // logout() {
-  //   return this.auth
-  //     .$signOut()
-  //     .then(this.clearAuthData);
-  // }
+  register(user) {
+    return this.$trade.create('register', user).then(this.storeUser);
+  }
 
-  // requireAuthentication() {
-  //   return this.auth
-  //     .$waitForSignIn()
-  //     .then(this.onSignIn);
-  // }
+  current() {
+    return this.$trade.get('current').then(this.storeUser, this.clearUser);
+  }
 
   isAuthenticated() {
     return !!this.user;

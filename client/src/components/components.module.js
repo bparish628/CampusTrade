@@ -1,8 +1,12 @@
 import auth from './auth/auth.module';
+import browse from './browse/browse.module';
+import dashboard from './dashboard/dashboard.module';
 
 const components = angular
   .module('components', [
-    auth
+    auth,
+    browse,
+    dashboard
   ])
   .name;
 

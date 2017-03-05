@@ -18,14 +18,11 @@ const loginComponent = {
       };
     }
     
-    login(user) {
+    login() {
       return this.authService
-        .register(user)
-        .then(() => {
-          this.$state.go('dashboard');
-        }, reason => {
-          this.error = reason.message;
-        });
+        .login(this.user)
+        .then(() => this.$state.go('dashboard'), 
+          reason => this.error = reason.message);
     }
   },
 };

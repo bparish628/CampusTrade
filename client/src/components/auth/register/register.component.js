@@ -27,11 +27,8 @@ const registerComponent = {
     register() {
       return this.authService
         .register(this.user)
-        .then(() => {
-          this.$state.go('dashboard');
-        }, reason => {
-          this.error = reason.message;
-        });
+        .then(() => this.$state.go('dashboard'),
+          reason => this.error = reason.message);
     }
   },
 };

@@ -12,9 +12,13 @@ const appSideBarComponent = {
       { name: 'Physics 101' }
     ];
 
-    constructor(AuthService) {
+    constructor($scope, AuthService) {
       'ngInject';
-      this.isAuthenticated = AuthService.isAuthenticated();
+
+      // Need this to watch if a user is logged in
+      $scope.$watch(() => AuthService.user, () => {
+        this.isAuthenticated = AuthService.isAuthenticated();
+      });
     }
   }
 };
