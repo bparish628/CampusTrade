@@ -50,7 +50,7 @@ module.exports = {
       email: req.param('email'),
       password: req.param('password')
     }, function (err, user) {
-      if (err) return res.badRequest('Invalid credentials.');;
+      if (err) return res.badRequest('Invalid credentials have been entered. Please check and resubmit');;
       req.session.me = user.id;
 
       if (req.wantsJSON) {

@@ -6,6 +6,8 @@ const registerComponent = {
   controller: class RegisterComponent {
 
     maxDate = moment().subtract(15, 'years').toISOString();
+    error = null;
+
     constructor(AuthService, $state) {
       'ngInject';
 
@@ -28,7 +30,7 @@ const registerComponent = {
       return this.authService
         .register(this.user)
         .then(() => this.$state.go('dashboard'),
-          reason => this.error = reason.message);
+          reason => this.error = reason.data);
     }
   },
 };

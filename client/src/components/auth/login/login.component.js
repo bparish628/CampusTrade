@@ -3,6 +3,9 @@ import template from './login';
 const loginComponent = {
   template,
   controller: class LoginComponent {
+
+    error = null;
+
     constructor(AuthService, $state) {
       'ngInject';
 
@@ -22,7 +25,7 @@ const loginComponent = {
       return this.authService
         .login(this.user)
         .then(() => this.$state.go('dashboard'), 
-          reason => this.error = reason.message);
+          reason => this.error = reason.data);
     }
   },
 };
