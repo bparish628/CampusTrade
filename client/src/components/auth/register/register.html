@@ -4,7 +4,7 @@
       <div class="card-panel teal lighten-5 hoverable">
         <div class="card-panel red lighten-5" ng-show="$ctrl.error">{{$ctrl.error}}</div>
         <h3 class="blue-grey-text">Register</h3>
-        <form>
+        <ng-form name="$ctrl.registerForm">
           <div class="row">
             <div class="input-field col s6">
               <input class="validate" type="text" name="firstName" ng-model="$ctrl.user.firstName"/>
@@ -20,7 +20,8 @@
               <input class="validate" type="email" name="email" ng-model="$ctrl.user.email"/>
               <label for="email">Email Address</label>
             </div>
-            <div class="input-field col s6">
+            <!-- Ignore for now -->
+            <!--<div class="input-field col s6">
               <input 
               input-date
               class="datepicker"
@@ -32,7 +33,7 @@
               max="{{$ctrl.maxDate}}"
               select-years="100"/>
               <label for="dateOfBirth">Date of birth</label>
-            </div>
+            </div>-->
           </div>
           <div class="row">
             <div class="input-field col s6">
@@ -45,9 +46,9 @@
             </div>
           </div>
           <div class="row">
-            <a class="waves-effect waves-light btn right" ng-click="$ctrl.register()">Register</a>
+            <a class="waves-effect waves-light btn right" ng-click="$ctrl.register()" ng-disabled="$ctrl.registerForm.$invalid">Register</a>
           </div>
-        </form>
+        </ng-form>
       </div>
     </div>
   </div>

@@ -11,8 +11,8 @@ module.exports = {
     email: { unique: true, type: 'email', required: true},
     password: { type: 'string', required: true },
     firstName: { type: 'string', required: true },
-    lastName: { type: 'string', required: true },
-    dateOfBirth: { type: 'string', required: true }
+    lastName: { type: 'string', required: true }
+    // dateOfBirth: { type: 'string', required: true }
   },
 
   
@@ -20,7 +20,9 @@ module.exports = {
     User.create({
       // name: inputs.name,
       email: inputs.email,
-      password: inputs.password
+      password: inputs.password,
+      firstName: inputs.firstName,
+      lastName: inputs.lastName
     })
     .exec(cb);
   },
