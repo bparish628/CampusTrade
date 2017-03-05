@@ -1,8 +1,17 @@
 <ul id="slide-out" class="side-nav fixed">
+  <li ui-sref="auth.login" ng-if="!$ctrl.isAuthenticated">
+    <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">fingerprint</i>Log In</div>
+  </li>
+  <li ui-sref="auth.register" ng-if="!$ctrl.isAuthenticated">
+    <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">perm_identity</i>Register</div>
+  </li>
+  <li ui-sref="dashboard" ng-if="$ctrl.isAuthenticated">
+    <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">dashboard</i>Dashboard</div>
+  </li>
   <li ui-sref="browse">
     <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">explore</i>Browse</div>
   </li>
-  <ul class="collapsible" data-collapsible="expandable">
+  <ul class="collapsible" data-collapsible="expandable" ng-if="$ctrl.isAuthenticated">
     <li>
       <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">trending_up</i>My Trades</div>
       <div class="collapsible-body">
