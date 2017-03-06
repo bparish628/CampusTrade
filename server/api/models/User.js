@@ -18,7 +18,6 @@ module.exports = {
   
   register: function (inputs, cb) {
     User.create({
-      // name: inputs.name,
       email: inputs.email,
       password: inputs.password,
       firstName: inputs.firstName,

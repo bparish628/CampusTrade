@@ -24,15 +24,15 @@ const auth = angular
   .run($api => {
     $api.add({
       resource: 'register',
-      url: '/user/register'
+      url: '/register'
     });
     $api.add({
       resource: 'login',
-      url: '/user/login'
+      url: '/login'
     });
     $api.add({
       resource: 'logout',
-      url: '/user/logout'
+      url: '/logout'
     });
     $api.add({
       resource: 'current',

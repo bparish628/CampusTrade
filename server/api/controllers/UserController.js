@@ -46,7 +46,8 @@ module.exports = {
 
     // Attempt to signup a user using the provided parameters
     User.register({
-      // name: req.param('name'),
+      firstName: req.param('firstName'),
+      lastName: req.param('lastName'),
       email: req.param('email'),
       password: req.param('password')
     }, function (err, user) {
@@ -57,7 +58,7 @@ module.exports = {
         return res.ok(user);
       }
 
-      return res.redirect('/welcome');
+      return res.redirect('/');
     });
   },
 
