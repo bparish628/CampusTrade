@@ -36,7 +36,7 @@ const auth = angular
     });
     $api.add({
       resource: 'current',
-      url: '/user/current'
+      url: '/current'
     });
   })
   .name;

@@ -52,6 +52,7 @@ module.exports.routes = {
   // Endpoints
   'post /login': 'UserController.login',
   'post /register': 'UserController.register',
+  'get /current': 'UserController.current',
   '/logout': 'UserController.logout',
 
 };
