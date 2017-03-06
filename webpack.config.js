@@ -59,11 +59,7 @@ const baseConfig = {
     }),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]),
-    new ProgressBarPlugin(),
-    new webpack.ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      path.resolve(__dirname, 'client/src')
-    )
+    new ProgressBarPlugin()
   ],
 
   node: {

@@ -24,8 +24,4 @@ angular
 
     $locationProvider.hashPrefix('');
     $urlRouterProvider.otherwise('/browse');
-  })
-  .run(async (AuthService, $state) => {
-    await AuthService.current();
-  })
-  .name;
+  });

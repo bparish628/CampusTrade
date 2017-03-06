@@ -17,7 +17,8 @@ module.exports.bootstrap = function(cb) {
   }
 
   async.series([
- 		Category.seed
+    Category.seed,
+    UserMessage.seed
  		], cb);
 
 };
