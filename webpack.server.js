@@ -29,17 +29,12 @@ const server = new WebpackDevServer(compiler, {
   },
   proxy: [
     {
-      context: '/api/**',
-      target: serverUrl,
-      changeOrigin: true,
-      pathRewrite: {
-          '^/api': ''
-      },
-      secure: false
-    },
-    {
       context: (pathname, req) => pathname === '/' && req.method === 'GET',
       target: `${serverUrl}/index.html`
+    },
+    {
+      context: '/**',
+      target: serverUrl
     }
   ]
 });

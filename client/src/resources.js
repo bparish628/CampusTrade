@@ -1,7 +1,7 @@
 import ngResource from 'angular-resource';
 
 const resources = angular.module('app.resources', [ ngResource ])
-  .value('$apiUrl', '/api')
+  .value('$apiUrl', '')
 
   .factory('$api', ($resource, $apiUrl) => {
     'ngInject';
