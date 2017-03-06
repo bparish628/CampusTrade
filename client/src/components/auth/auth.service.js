@@ -16,7 +16,7 @@ class AuthService {
   }
 
   login(user) {
-    return this.$trade.update('login', user).then(this.storeUser);
+    return this.$trade.create('login', user).then(this.storeUser);
   }
 
   logout() {

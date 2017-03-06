@@ -47,5 +47,11 @@ module.exports.routes = {
   ***************************************************************************/
   '/index.html': {
     view: 'index'
-  }
+  },
+
+  // Endpoints
+  'post /login': 'UserController.login',
+  'post /register': 'UserController.register',
+  '/logout': 'UserController.logout',
+
 };
