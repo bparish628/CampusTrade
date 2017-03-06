@@ -80,6 +80,11 @@ const developmentConfig = Object.assign({}, baseConfig, {
 });
 
 const productionConfig = Object.assign({}, baseConfig, {
+  output: {
+    path: path.join(__dirname, '/server/assets/js'),
+    publicPath: 'js/',
+    filename: '[name].js'
+  },
   plugins: [
     ...baseConfig.plugins,
 
