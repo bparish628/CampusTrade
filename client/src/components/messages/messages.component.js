@@ -34,7 +34,7 @@ const messagesComponent = {
       }            
     ];
 
-    viewMessage = 1; 
+    viewMessage = 0; 
     
     selectMessage(setMessage){
       this.viewMessage = setMessage;
