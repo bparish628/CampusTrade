@@ -1,10 +1,19 @@
 <ul id="slide-out" class="side-nav fixed">
-  <li>
+  <li ui-sref="auth.login" ng-if="!$ctrl.isAuthenticated">
+    <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">fingerprint</i>Log In</div>
+  </li>
+  <li ui-sref="auth.register" ng-if="!$ctrl.isAuthenticated">
+    <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">perm_identity</i>Register</div>
+  </li>
+  <li ui-sref="dashboard" ng-if="$ctrl.isAuthenticated">
+    <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">dashboard</i>Dashboard</div>
+  </li>
+  <li ui-sref="browse">
     <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">explore</i>Browse</div>
   </li>
-  <ul class="collapsible" data-collapsible="expandable">
+  <ul class="collapsible" data-collapsible="expandable" ng-if="$ctrl.isAuthenticated">
     <li>
-      <div class="collapsible-header waves-effect waves-teal active"><i class="material-icons">trending_up</i>My Trades</div>
+      <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">trending_up</i>My Trades</div>
       <div class="collapsible-body">
         <ul>
           <li ng-repeat="item in $ctrl.tradeItems" class="sidebar-item"><a href="#" class="waves-effect waves-teal">{{item.name}}</a></li>
@@ -12,7 +21,7 @@
       </div>
     </li>
     <li>
-      <div class="collapsible-header waves-effect waves-teal active"><i class="material-icons">grade</i>My Wishlist</div>
+      <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">grade</i>My Wishlist</div>
       <div class="collapsible-body">
         <ul>
           <li ng-repeat="item in $ctrl.wishlistItems" class="sidebar-item"><a href="#" class="waves-effect waves-teal">{{item.name}}</a></li>

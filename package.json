@@ -45,6 +45,8 @@
   },
   "scripts": {
     "prestart": "npm prune && npm install",
+    "build:prod": "webpack --env=prod -p --config ./webpack.config",
+    "start:prod": "webpack --env=prod -p --config ./webpack.config && (cd server && node app.js)",
     "start": "gulp && node webpack.server.js",
     "start-server": "npm run server-install && node server/app.js",
     "server-install": "(cd server && npm install)"
