@@ -42,5 +42,6 @@ nbproject
 ########################
 # local config
 ########################
-config/local.js
+server/config/local.js
 dist
+server/assets

@@ -59,11 +59,7 @@ const baseConfig = {
     }),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]),
-    new ProgressBarPlugin(),
-    new webpack.ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      path.resolve(__dirname, 'client/src')
-    )
+    new ProgressBarPlugin()
   ],
 
   node: {
@@ -84,6 +80,11 @@ const developmentConfig = Object.assign({}, baseConfig, {
 });
 
 const productionConfig = Object.assign({}, baseConfig, {
+  output: {
+    path: path.join(__dirname, '/server/assets/js'),
+    publicPath: 'js/',
+    filename: '[name].js'
+  },
   plugins: [
     ...baseConfig.plugins,
 

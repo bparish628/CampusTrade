@@ -1,0 +1,35 @@
+main, footer {
+  padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+
+.side-nav.fixed {
+  margin-top: 64px;
+  .collapsible-header{
+    border: 1px solid #ddd !important;
+    &.active {
+      background-color: #009688;
+      color: #ddd;
+      border-bottom-color: #009688 !important;
+
+      &:hover {
+        background-color: #26a69a;
+        color: #000;
+      }
+    }
+  }
+
+  .sidebar-item {
+    border-bottom: .2px solid #607d8b !important;
+  }
+
+  .collapsible-body {
+    padding: 0px;
+  }
+}
+

@@ -8,7 +8,30 @@
 module.exports = {
 
   attributes: {
+    email: { unique: true, type: 'email', required: true},
+    password: { type: 'string', required: true },
+    firstName: { type: 'string', required: true },
+    lastName: { type: 'string', required: true }
+    // dateOfBirth: { type: 'string', required: true }
+  },
 
+  
+  register: function (inputs, cb) {
+    User.create({
+      email: inputs.email,
+      password: inputs.password,
+      firstName: inputs.firstName,
+      lastName: inputs.lastName
+    })
+    .exec(cb);
+  },
+
+  login: function (inputs, cb) {
+    User.findOne({
+      email: inputs.email,
+      password: inputs.password
+    })
+    .exec(cb);
   }
 };
 
