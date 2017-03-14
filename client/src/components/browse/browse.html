@@ -1,17 +1,17 @@
 <div class="container row">
-  <div class="col s3" ng-repeat="post in $ctrl.posts">
-    <div class="card">
-      <div class="card-content" ng-if="::post.image">
-        <center>
-          <img ng-src="{{post.image}}" style="max-height: 100px; max-width: 100px;" />
-        </center>
-      </div>
-      <div class="card-content grey lighten-4">
-        <center class="name-margin"><b>{{post.name}}</b></center>
-        <p>Category: {{post.category.name}}</p>
-        <p>Asking Price: {{post.price | currency}}</p>
-        <p>Seller: {{post.user.firstName}} {{post.user.lastName}}</p>
-      </div>
-    </div>
-  </div>
+  <browse-search categories="$ctrl.categories" on-filter="$ctrl.filterResults($event)"></browse-search>
+  <ul class="collection">
+    <li class="collection-item avatar" ng-repeat="post in $ctrl.posts">
+      <img ng-src="{{post.image}}" alt="" class="circle responsive-img" ng-if="::post.image">
+      <i class="material-icons circle teal" ng-if="::!post.image">{{::post.category.icon}}</i>
+      <span class="title"><b>{{::post.name}}</b></span>
+      <p>
+        Category: {{::post.category.name}}<br>
+        Asking Price: {{::post.price | currency}} <br>
+        Seller: {{::post.user.firstName}} {{::post.user.lastName}}
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+  </ul>
 </div>
+
