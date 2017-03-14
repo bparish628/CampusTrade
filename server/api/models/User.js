@@ -14,7 +14,6 @@ module.exports = {
     lastName: { type: 'string', required: true }
     // dateOfBirth: { type: 'string', required: true }
   },
-
   
   register: function (inputs, cb) {
     User.create({
@@ -32,6 +31,11 @@ module.exports = {
       password: inputs.password
     })
     .exec(cb);
-  }
+  },
+
+  seedData: [
+    { email: 'test@test.com', password: 'password', firstName: 'Test', lastName: 'User' },
+    { email: 'johndoe@campustrade.com', password: 'password', firstName: 'John', lastName: 'Doe' }
+  ]
 };
 
