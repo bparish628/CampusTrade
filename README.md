@@ -13,6 +13,7 @@ Once node is installed then run the following command to install needed librarie
 
 ## Running The Application
 First start off by starting the server. Make sure you are in the root directory of `CampusTrade`.
+To reseed the application `cd server`, and run `npm run reseed`.
 To run the server run the following command
 
     npm run start-server
