@@ -9,7 +9,10 @@
         Category: {{::post.category.name}}<br>
         Seller: {{::post.user.firstName}} {{::post.user.lastName}}
       </p>
-      <p class="secondary-content">{{::post.price | currency}}</p>
+      <p class="secondary-content">
+        {{::post.createdAt | date}}<br>
+        {{::post.price | currency}}
+      </p>
     </li>
   </ul>
   <div ng-if="!$ctrl.posts.length" class="row">
