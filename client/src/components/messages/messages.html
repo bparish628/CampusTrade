@@ -4,14 +4,11 @@
     <!-- Left side messages navigation -->
     <div class="col s3">
       <!-- Contains individual message preview information-->
-      <section ng-repeat = "message in $ctrl.messages | orderBy: '+sentTime'">
-        <a href ng-click="$ctrl.selectMessage($index)">
+      <section ng-repeat = "usr in $ctrl.connectedUsers">
+        <a href ng-click="$ctrl.viewConversation({{usr.user}})">
           <div class="card-panel white">
-            <strong>{{message.sentFrom}}</strong> 
+            <strong>{{usr.user}}</strong> 
             <br/>
-            {{message.message | limitTo: 20}}
-            <br/>
-            {{message.sentTime | date:"MM.dd.yyyy 'at' h:mma" : timezone}}
           </div>
         </a>
       </section>
@@ -21,8 +18,8 @@
     <div class="col s9">
       <section>
         <div class="card-panel light-blue lighten-5">
-          <p><strong><center>{{$ctrl.messages[$ctrl.viewMessage].sentFrom}}</center></strong></p>
-          {{$ctrl.messages[$ctrl.viewMessage].message}}
+          <p ng-repeat = "message in $ctrl.conversation |orderBy: '+sentTime'" ><strong><center>{{message.sentFrom}}</center></strong></p>
+          {{message.message}}
         </div>
       </section>
     </div>
