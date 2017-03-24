@@ -17,7 +17,10 @@ module.exports.bootstrap = function(cb) {
   }
 
   async.series([
+    User.seed,
     Category.seed,
+    Post.seed,
+    Wishlist.seed,
     User_Message.seed
  		], cb);
 
