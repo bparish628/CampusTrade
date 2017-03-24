@@ -4,25 +4,20 @@
     <!-- Left side messages navigation -->
     <div class="col s3">
       <!-- Contains individual message preview information-->
-      <section ng-repeat = "usr in $ctrl.connectedUsers">
-        <a href ng-click="$ctrl.viewConversation({{usr.user}})">
+      <section ng-repeat = "user in $ctrl.users">
+        <a ui-sref="messages.list({id: user.id})">
           <div class="card-panel white">
-            <strong>{{usr.user}}</strong> 
+            <strong>{{user.name}}</strong> 
             <br/>
           </div>
         </a>
       </section>
     </div>
     <!-- Right side selected message box -->
-
     <div class="col s9">
       <section>
-        <div class="card-panel light-blue lighten-5">
-          <p ng-repeat = "message in $ctrl.conversation |orderBy: '+sentTime'" ><strong><center>{{message.sentFrom}}</center></strong></p>
-          {{message.message}}
-        </div>
+        <div ui-view></div>
       </section>
     </div>
-
   </div>
 </div>

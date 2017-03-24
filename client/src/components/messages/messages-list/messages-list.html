@@ -1,0 +1,6 @@
+<div class="card-panel light-blue lighten-5" ng-repeat="message in $ctrl.messages | orderBy: '+sentTime'">
+  <p>
+    <strong><center>{{message.sentFrom.name}}</center></strong>
+  </p>
+  {{message.message}}
+</div>
