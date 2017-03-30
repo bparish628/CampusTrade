@@ -14,7 +14,7 @@ const appHeaderComponent = {
     }
 
     logout() {
-      this.AuthService.logout().then(() => this.$state.go('login'));
+      this.AuthService.logout().then(() => this.$state.go('browse'));
     }
   }
 };

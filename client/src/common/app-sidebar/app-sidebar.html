@@ -12,7 +12,7 @@
     <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">explore</i>Browse</div>
   </li>
   <ul class="collapsible" data-collapsible="expandable" ng-if="$ctrl.isAuthenticated">
-    <li>
+    <li ng-if="$ctrl.tradeItems.length">
       <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">trending_up</i>My Trades</div>
       <div class="collapsible-body">
         <ul>
@@ -20,11 +20,11 @@
         </ul>  
       </div>
     </li>
-    <li>
+    <li ng-if="$ctrl.wishlistItems.length">
       <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">grade</i>My Wishlist</div>
       <div class="collapsible-body">
         <ul>
-          <li ng-repeat="item in $ctrl.wishlistItems" class="sidebar-item"><a href="#" class="waves-effect waves-teal">{{item.name}}</a></li>
+          <li ng-repeat="item in $ctrl.wishlistItems" class="sidebar-item"><a href="#" class="waves-effect waves-teal">{{item.post.name}}</a></li>
         </ul>  
       </div>
     </li>

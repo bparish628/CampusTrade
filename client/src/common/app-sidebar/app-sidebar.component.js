@@ -3,21 +3,21 @@ const appSideBarComponent = {
   template,
   controller: class appSideBarComponent {
 
-    wishlistItems = [
-      { name: '3 person Couch' }
-    ];
+    wishlistItems = [];
 
-    tradeItems = [
-      { name: 'My book' },
-      { name: 'Physics 101' }
-    ];
+    tradeItems = [];
 
-    constructor($scope, AuthService) {
+    constructor($scope, AuthService, BrowseService) {
       'ngInject';
 
       // Need this to watch if a user is logged in
-      $scope.$watch(() => AuthService.user, () => {
+      $scope.$watch(() => AuthService.user, user => {
         this.isAuthenticated = AuthService.isAuthenticated();
+
+        if (user) {
+          BrowseService.getUserPosts(user).then(posts => (this.tradeItems = posts));
+          BrowseService.getWishlist(user).then(wishlist => (this.wishlistItems = wishlist));
+        }
       });
     }
   }
