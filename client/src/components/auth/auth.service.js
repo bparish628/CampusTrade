@@ -31,6 +31,10 @@ class AuthService {
     return this.$trade.get('current').then(this.storeUser, this.clearUser);
   }
 
+  updateUser(user) {
+    return this.$trade.update('current', user).then(this.storeUser);
+  }
+
   isAuthenticated() {
     return !!this.user;
   }

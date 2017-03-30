@@ -67,6 +67,18 @@ module.exports = {
       return res.ok(req.session.me);
     }
     return res.badRequest('Not logged in.');
+  },
+
+  updateCurrent: function (req, res) {
+      User.update({id: req.param('id')}, {
+        firstName: req.param('firstName'),
+        lastName: req.param('lastName'),
+        email: req.param('email')
+      }, function (err, user) {
+          if (err) return res.badRequest('Invalid credentials have been entered. Please check and resubmit.');;
+          req.session.me = user[0];
+          return res.ok(req.session.me);
+      });
   }
 };
 
