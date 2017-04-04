@@ -3,9 +3,7 @@
     <div class="nav-wrapper">
       <a href="#" class="brand-logo center"><i class="material-icons">local_library</i>Campus Trade</a>
       <ul class="right hide-on-med-and-down" ng-if="$ctrl.isAuthenticated">
-        <li><a href="#" tooltipped data-position="bottom" data-delay="250" data-tooltip="Money"><i class="material-icons">attach_money</i></a></li>
         <li ui-sref="messages" tooltipped data-position="bottom" data-delay="250" data-tooltip="Messages"><a href="#"><i class="material-icons">mail</i></a></li>
-        <li tooltipped data-position="bottom" data-delay="250" data-tooltip="Notifications"><a href="#"><i class="material-icons">notifications</i></a></li>
         <li ui-sref="profile" tooltipped data-position="bottom" data-delay="250" data-tooltip="Profile"><a href="#"><i class="material-icons">person</i></a></li>
         <li ng-click="$ctrl.logout()" tooltipped data-position="bottom" data-delay="250" data-tooltip="Logout"><a href="#"><i class="material-icons">power_settings_new</i></a></li>
       </ul>
