@@ -29,7 +29,7 @@
       </div>
     </li>
   </ul>
-  <li ui-sref="post">
+  <li ui-sref="post" ng-if="$ctrl.isAuthenticated">
     <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">add</i>Post Item</div>
   </li>
 </ul>

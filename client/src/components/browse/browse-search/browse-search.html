@@ -1,12 +1,16 @@
-<div input-field>
-  <select material-select watch ng-model="$ctrl.search" ng-change="$ctrl.addCriteria()" size="6">
-    <option value="" disabled selected>Search by category...</option>
-    <option ng-repeat="category in $ctrl.categories | exclude: $ctrl.criteria | orderBy:'name'" value="{{category.name}}">
-      {{::category.name}}
-    </option>
-  </select>
+<div class="row">
+  <div class="input-field col s6">
+    <input ng-model="$ctrl.searchTerm" ng-change="$ctrl.addSearchTerm()" type="text" name="name" placeholder="Search by name..."/>
+  </div>
+  <div input-field class="col s6">
+    <select material-select watch ng-model="$ctrl.search" ng-change="$ctrl.addCriteria()" size="6">
+      <option value="" disabled selected>Search by category...</option>
+      <option ng-repeat="category in $ctrl.categories | exclude: $ctrl.criteria | orderBy:'name'" value="{{category.name}}">
+        {{::category.name}}
+      </option>
+    </select>
+  </div>
 </div>
-{{}}
 <div>
   <span class="chip blue-grey white-text darken-1" ng-repeat="item in $ctrl.criteria">
     {{item}}
