@@ -19,9 +19,11 @@ angular
     common
   ])
   .component('main', mainComponent)
-  .config(($locationProvider, $urlRouterProvider) => {
+  .config(($locationProvider, $urlRouterProvider, $qProvider) => {
     'ngInject';
 
+    // Turn off rejection of promise errors
+    $qProvider.errorOnUnhandledRejections(false);
     $locationProvider.hashPrefix('');
     $urlRouterProvider.otherwise('/browse');
   });

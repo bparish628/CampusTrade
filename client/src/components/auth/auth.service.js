@@ -2,10 +2,10 @@ class AuthService {
 
   user = null;
 
-  constructor($trade) {
+  constructor($trade, $q) {
     'ngInject';
 
-    Object.assign(this, { $trade });
+    Object.assign(this, { $trade, $q });
     this.storeUser = data => {
       this.user = data;
       return this.user;
@@ -28,7 +28,9 @@ class AuthService {
   }
 
   current() {
-    return this.$trade.get('current').then(this.storeUser, this.clearUser);
+    return this.$trade.get('current')
+    .then(this.storeUser)
+    .catch(() => this.$q.reject());
   }
 
   updateUser(user) {

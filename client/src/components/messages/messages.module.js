@@ -10,6 +10,9 @@ const messages = angular
       .state('messages', {
         url: '/messages',
         template: '<messages></messages>',
+        resolve: {
+          user: (AuthService) => AuthService.current()
+        }
       });
   })
   .name;

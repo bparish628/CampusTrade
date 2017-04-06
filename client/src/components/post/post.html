@@ -2,15 +2,18 @@
   <div class="row">
     <div class="col s12">
       <div class="card-panel white lighten-5 hoverable">
-        <div class="card-panel red lighten-5" ng-show="$ctrl.error">{{$ctrl.error}}</div>
+        <div class="card-panel red lighten-5" ng-show="$ctrl.errorMessage">{{$ctrl.errorMessage}}</div>
+        <div class="card-panel green lighten-5" ng-show="$ctrl.successMessage">{{$ctrl.successMessage}}</div>        
         <h3 class="blue-grey-text">Post new item</h3>
         <form name="postForm">
           <div class="row">
             <div class="input-field col s6">
+              <i class="material-icons prefix">note</i>
               <input class="validate" type="text" name="name" ng-model="$ctrl.post.name"/>
               <label for="name">Name</label>
             </div>
             <div class="input-field col s6">
+              <i class="material-icons prefix">bookmark_border</i>
               <select material-select watch ng-model="$ctrl.post.category" size="6">
                 <option value="" disabled selected>Select a category...</option>
                 <option ng-repeat="category in $ctrl.categories | orderBy:'name'" value="{{category.id}}">
@@ -21,13 +24,21 @@
             </div>
           </div>
           <div class="row">
+            <div class="input-field col s3">
+              <i class="material-icons prefix">attach_money</i>
+              <input class="validate" type="text" name="price" ng-model="$ctrl.post.price" pattern="(?=.)^(([1-9][0-9]{0,2}(,[0-9]{3})*)|[0-9]+)?(\.[0-9]{1,2})?$"/>
+              <label for="price">Price</label>
+            </div>
+          </div>
+          <div class="row">
             <div class="input-field col s12">
-              <textarea id="description" class="materialize-textarea"></textarea>
+              <i class="material-icons prefix">info_outline</i>
+              <textarea id="description" class="materialize-textarea" ng-model="$ctrl.post.description"></textarea>
               <label for="description">Description</label>
             </div>
           </div>
           <div class="row">
-            <button class="waves-effect waves-light btn right" ng-click="$ctrl.post()" ng-disabled="$ctrl.postForm.$invalid" type="submit">Post</button>
+            <button class="waves-effect waves-light btn right" ng-click="$ctrl.createPost()" ng-disabled="postForm.$invalid" type="submit">Post</button>
           </div>
         </form>
       </div>

@@ -1,7 +1,7 @@
 const mainComponent = {
   template: `
-    <app-sidebar ng-if="$ctrl.authenticated"></app-sidebar>
-    <div ng-if="$ctrl.authenticated">
+    <app-sidebar ng-if="$ctrl.loaded"></app-sidebar>
+    <div ng-if="$ctrl.loaded">
       <div ui-view></div>
     </div>
   `,
@@ -9,7 +9,9 @@ const mainComponent = {
     constructor(AuthService) {
       'ngInject';
       AuthService.current().then(user => {
-        this.authenticated = true;
+        this.loaded = true;
+      }, ()=> {
+        this.loaded = true;
       });
     }
   }

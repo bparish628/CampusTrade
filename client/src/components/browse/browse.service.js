@@ -1,4 +1,7 @@
 class BrowseService {
+
+  addedPosts = 0;
+  
   constructor($trade) {
     'ngInject';
     Object.assign(this, { $trade });
@@ -18,6 +21,10 @@ class BrowseService {
 
   getCategories() {
     return this.$trade.list('categories');
+  }
+
+  createPost(post) {
+    return this.$trade.create('posts', post);
   }
 }
 
