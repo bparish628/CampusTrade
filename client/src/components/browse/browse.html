@@ -1,7 +1,7 @@
 <div class="container row">
   <browse-search categories="$ctrl.categories" on-filter="$ctrl.filterResults($event)"></browse-search>
   <ul class="collection" ng-if="$ctrl.posts.length">
-    <li class="collection-item avatar" ng-repeat="post in $ctrl.posts | orderBy: 'createdAt' :true">
+    <li class="collection-item avatar" ng-repeat="post in $ctrl.posts | orderBy: 'createdAt' :true | limitTo:15">
       <img ng-src="{{post.image}}" alt="" class="circle responsive-img" ng-if="::post.image">
       <i class="material-icons circle teal" ng-if="::!post.image">{{::post.category.icon}}</i>
       <span class="title"><b>{{::post.name}}</b></span>

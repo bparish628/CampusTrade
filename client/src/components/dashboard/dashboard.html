@@ -1,1 +1,27 @@
-Dashboard!
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h4 class="blue-grey-text">Recently Viewed Posts</h4>
+      <div class="row">
+        <div class="col s6" ng-repeat="post in $ctrl.pages.displayedPages">
+          <div class="card-panel white lighten-5 hoverable">
+            {{post.name}}
+          </div>
+        </div>
+        <div class="center">
+          <ul class="pagination">
+            <li ng-class="{ disabled: $ctrl.pages.currentPage === 0 }" ng-click="$ctrl.changeView($ctrl.pages.currentPage - 1)">
+              <a><i class="material-icons">chevron_left</i></a>
+            </li>
+            <li class="waves-effect" ng-class="{ active: $ctrl.pages.currentPage === page }" ng-repeat="page in $ctrl.pages.num" ng-click="$ctrl.changeView(page)">
+              <a>{{page + 1}}</a>
+            </li>
+            <li ng-class="{ disabled: $ctrl.pages.currentPage === $ctrl.pages.num.length - 1 }" ng-click="$ctrl.changeView($ctrl.pages.currentPage + 1)">
+              <a><i class="material-icons">chevron_right</i></a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
