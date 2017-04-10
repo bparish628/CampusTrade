@@ -1,5 +1,7 @@
 import template from './browse';
 
+const NUMBER_OF_ITEMS = 10;
+
 const browseComponent = {
   bindings: {
     posts: '<',
@@ -8,8 +10,11 @@ const browseComponent = {
   template,
   controller: class BrowseComponent {
 
+    page = {};
+
     $onInit() {
-      this.originalPosts = angular.copy(this.posts);
+      this.originalPosts = this.posts = angular.copy(this.posts);
+      this.updatePagination();
     }
     
     filterResults({ criteria, search }) {
@@ -21,6 +26,23 @@ const browseComponent = {
       if (search) {
         this.posts = this.posts.filter(post => post.name.toLowerCase().includes(search.toLowerCase()));
       }
+      this.updatePagination();
+    }
+
+    updatePagination() {
+      const numPages = Math.ceil(this.posts.length / NUMBER_OF_ITEMS);
+      this.page.num = [...Array(numPages).keys()];
+      this.changeView();
+    }
+
+    changeView(num = 0) {
+      if (num === -1 || num === this.page.num.length) return
+
+      const end = this.posts.length < num * NUMBER_OF_ITEMS + NUMBER_OF_ITEMS ? this.posts.length : num * NUMBER_OF_ITEMS + NUMBER_OF_ITEMS;
+      const currentlyViewed = this.posts.slice(num * NUMBER_OF_ITEMS, end);
+      this.page.displayedPages = currentlyViewed;
+      this.page.currentPage = num;
+      this.page.number
     }
   }
 };

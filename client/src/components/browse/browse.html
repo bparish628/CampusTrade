@@ -1,7 +1,7 @@
 <div class="container row">
   <browse-search categories="$ctrl.categories" on-filter="$ctrl.filterResults($event)"></browse-search>
   <ul class="collection" ng-if="$ctrl.posts.length">
-    <li class="collection-item avatar" ng-repeat="post in $ctrl.posts | orderBy: 'createdAt' :true | limitTo:15">
+    <li class="collection-item avatar" ng-repeat="post in $ctrl.page.displayedPages | orderBy: 'createdAt' :true">
       <img ng-src="{{post.image}}" alt="" class="circle responsive-img" ng-if="::post.image">
       <i class="material-icons circle teal" ng-if="::!post.image">{{::post.category.icon}}</i>
       <span class="title"><b>{{::post.name}}</b></span>
@@ -17,6 +17,19 @@
   </ul>
   <div ng-if="!$ctrl.posts.length" class="row">
     <center class="flow-text">There are no posts with the submitted criteria.</center>
+  </div>
+  <div class="center" ng-if="$ctrl.posts.length && $ctrl.page.num.length > 1">
+    <ul class="pagination">
+      <li ng-class="{ disabled: $ctrl.page.currentPage === 0 }" ng-click="$ctrl.changeView($ctrl.page.currentPage - 1)" class="pointer">
+        <a><i class="material-icons">chevron_left</i></a>
+      </li>
+      <li class="waves-effect" ng-class="{ active: $ctrl.page.currentPage === page }" ng-repeat="page in $ctrl.page.num" ng-click="$ctrl.changeView(page)">
+        <a>{{page + 1}}</a>
+      </li>
+      <li ng-class="{ disabled: $ctrl.page.currentPage === $ctrl.page.num.length - 1 }" ng-click="$ctrl.changeView($ctrl.page.currentPage + 1)" class="pointer">
+        <a><i class="material-icons">chevron_right</i></a>
+      </li>
+    </ul>
   </div>
 </div>
 
