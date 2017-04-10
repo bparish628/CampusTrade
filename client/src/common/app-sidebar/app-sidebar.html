@@ -13,18 +13,22 @@
   </li>
   <ul class="collapsible" data-collapsible="expandable" ng-if="$ctrl.isAuthenticated">
     <li ng-if="$ctrl.tradeItems.length">
-      <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">trending_up</i>My Trades</div>
+      <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">trending_up</i>My Recent Trades</div>
       <div class="collapsible-body">
         <ul>
-          <li ng-repeat="item in $ctrl.tradeItems" class="sidebar-item"><a href="#" class="waves-effect waves-teal">{{item.name}}</a></li>
+          <li ng-repeat="item in $ctrl.tradeItems | orderBy: 'createdAt' :true | limitTo: 5" class="sidebar-item">
+            <a href="#" class="waves-effect waves-teal">{{item.name}} <span class="right">{{item.price | currency}}</span></a>
+          </li>
         </ul>  
       </div>
     </li>
     <li ng-if="$ctrl.wishlistItems.length">
-      <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">grade</i>My Wishlist</div>
+      <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">grade</i>Recently Wishlisted</div>
       <div class="collapsible-body">
         <ul>
-          <li ng-repeat="item in $ctrl.wishlistItems" class="sidebar-item"><a href="#" class="waves-effect waves-teal">{{item.post.name}}</a></li>
+          <li ng-repeat="item in $ctrl.wishlistItems | orderBy: 'createdAt' :true | limitTo: 5" class="sidebar-item">
+            <a href="#" class="waves-effect waves-teal">{{item.post.name}} <span class="right">{{item.post.price | currency}}</span></a>
+          </li>
         </ul>  
       </div>
     </li>

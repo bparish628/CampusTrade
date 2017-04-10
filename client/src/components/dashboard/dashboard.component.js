@@ -1,37 +1,73 @@
 import template from './dashboard';
 
+const NUMBER_OF_CARDS = 2;
+
 const dashboardComponent = {
   template,
+  bindings: {
+    user: '<',
+    categories: '<'
+  },
   controller: class DashboardComponent {
-    recentlyViewed = [
-      { name: 'Name1' },
-      { name: 'Name2' },
-      { name: 'Name3' },
-      { name: 'Name4' },
-      { name: 'Name5' },
-      { name: 'Name6' }
-    ];
 
-    inView = []
+    tradeItems = [];
+    wishlistItems = [];
 
-    constructor() {
-      const numPages = Math.ceil(this.recentlyViewed.length / 4);
-      this.pages = {
-        num: [...Array(numPages).keys()],
-        currentPage: 0,
-        displayedPages: []
-      };
-      this.changeView();
+    tradePages = {
+      num: [],
+      currentPage: 0,
+      displayedPages: []
+    };
+
+    wishlistPages = {
+      num: [],
+      currentPage: 0,
+      displayedPages: []
+    };
+
+    constructor(BrowseService, $q) {
+      'ngInject';
+      Object.assign(this, { BrowseService, $q });
+    }
+    
+    $onInit() {
+      this.fetch();
     }
 
-    changeView(num = 0){
-      if (num === -1 || num === this.pages.num.length) return
+    fetch() {
+      const getPosts = this.BrowseService.getUserPosts(this.user).then(posts => {this.tradeItems = posts});
+      const getWishlist = this.BrowseService.getWishlist(this.user).then(wishlist => {
+        this.wishlistItems = wishlist.map(item => {
+          item.post.category = this.categories.find(category => category.id === item.post.id);
+          return item;
+        });
+      });
+      this.$q.when(getPosts, getWishlist).then(() => {
+        const tradeNumPages = Math.ceil(this.tradeItems.length / NUMBER_OF_CARDS);
+        const wishlistNumPages = Math.ceil(this.wishlistItems.length / NUMBER_OF_CARDS);
+        this.tradePages.num = [...Array(tradeNumPages).keys()];
+        this.wishlistPages.num = [...Array(wishlistNumPages).keys()];
+        this.changeTradeView();
+        this.changeWishlistView();
+      });
+    }
 
-      const end = this.recentlyViewed.length < num*4 + 4 ? this.recentlyViewed.length : num*4 + 4
-      const currentlyViewed = this.recentlyViewed.slice(num*4, end);
+    changeTradeView(num = 0){
+      if (num === -1 || num === this.tradePages.num.length) return
 
-      this.pages.displayedPages = currentlyViewed;
-      this.pages.currentPage = num;
+      const end = this.tradeItems.length < num * NUMBER_OF_CARDS + NUMBER_OF_CARDS ? this.tradeItems.length : num * NUMBER_OF_CARDS + NUMBER_OF_CARDS;
+      const currentlyViewed = this.tradeItems.slice(num * NUMBER_OF_CARDS, end);
+      this.tradePages.displayedPages = currentlyViewed;
+      this.tradePages.currentPage = num;
+    }
+
+    changeWishlistView(num = 0){
+      if (num === -1 || num === this.wishlistPages.num.length) return
+
+      const end = this.wishlistItems.length < num * NUMBER_OF_CARDS + NUMBER_OF_CARDS ? this.wishlistItems.length : num * NUMBER_OF_CARDS + NUMBER_OF_CARDS;
+      const currentlyViewed = this.wishlistItems.slice(num*4, end);
+      this.wishlistPages.displayedPages = currentlyViewed;
+      this.wishlistPages.currentPage = num;
     }
   },
 };
