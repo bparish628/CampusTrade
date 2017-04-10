@@ -22,8 +22,9 @@ module.exports = {
     { name: 'Red couch', description: 'My grandma\'s couch.', price: '45.00', category: 6, user: 1 },
     { name: 'Lamp', description: 'This lamp lights this place up!', price: '8.00', category: 2, user: 2 },
     { name: 'Software Engineering Book', description: 'Book for software engineering', price: '60.00', category: 1, user: 1 },
-    { name: 'Riot Points ($20)', description: '$20 worth of riot points', price: '19.99', category: 5, user: 3 },
-    { name: 'Apple Macbook Pro', description: '2012 Edition', price: '450.00', category: 4, user: 3 }
+    { name: 'Riot Points', description: '$20 worth of riot points', price: '19.99', category: 5, user: 3 },
+    { name: 'Apple Macbook Pro', description: '2012 Edition', price: '450.00', category: 4, user: 3 },
+    { name: 'Dell Laptop', description: 'This laptop is in great condition.', price: '350.00', category: 4, user: 2 }
   ]
 };
 
