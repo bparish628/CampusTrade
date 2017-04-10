@@ -14,19 +14,19 @@
             <p>{{::post.description}}</p>
           </div>
         </div>
-        <div class="center" ng-if="$ctrl.tradePages.num.length > 1">
-          <ul class="pagination">
-            <li ng-class="{ disabled: $ctrl.tradePages.currentPage === 0 }" ng-click="$ctrl.changeTradeView($ctrl.tradePages.currentPage - 1)" class="pointer">
-              <a><i class="material-icons">chevron_left</i></a>
+      </div>
+      <div class="center" ng-if="$ctrl.tradePages.num.length > 1">
+        <ul class="pagination">
+          <li ng-class="{ disabled: $ctrl.tradePages.currentPage === 0 }" ng-click="$ctrl.changeTradeView($ctrl.tradePages.currentPage - 1)" class="pointer">
+            <a><i class="material-icons">chevron_left</i></a>
+          </li>
+          <li class="waves-effect" ng-class="{ active: $ctrl.tradePages.currentPage === page }" ng-repeat="page in $ctrl.tradePages.num" ng-click="$ctrl.changeTradeView(page)">
+            <a>{{page + 1}}</a>
+          </li>
+          <li ng-class="{ disabled: $ctrl.tradePages.currentPage === $ctrl.tradePages.num.length - 1 }" ng-click="$ctrl.changeTradeView($ctrl.tradePages.currentPage + 1)" class="pointer">
+            <a><i class="material-icons">chevron_right</i></a>
             </li>
-            <li class="waves-effect" ng-class="{ active: $ctrl.tradePages.currentPage === page }" ng-repeat="page in $ctrl.tradePages.num" ng-click="$ctrl.changeTradeView(page)">
-              <a>{{page + 1}}</a>
-            </li>
-            <li ng-class="{ disabled: $ctrl.tradePages.currentPage === $ctrl.tradePages.num.length - 1 }" ng-click="$ctrl.changeTradeView($ctrl.tradePages.currentPage + 1)" class="pointer">
-              <a><i class="material-icons">chevron_right</i></a>
-              </li>
-          </ul>
-        </div>
+        </ul>
       </div>
     </div>
   </div>
@@ -44,21 +44,20 @@
             <p>{{::item.post.name}} <span class="right">{{::item.post.price | currency}}<span></p>
             <p>{{::item.post.description}}</p>
           </div>
-          </div>
         </div>
-        <div class="center"ng-if="$ctrl.wishlistPages.num.length > 1">
-          <ul class="pagination">
-            <li ng-class="{ disabled: $ctrl.wishlistPages.currentPage === 0 }" ng-click="$ctrl.changeWishlistView($ctrl.wishlistPages.currentPage - 1)" class="pointer">
-              <a><i class="material-icons">chevron_left</i></a>
+      </div>
+      <div class="center"ng-if="$ctrl.wishlistPages.num.length > 1">
+        <ul class="pagination">
+          <li ng-class="{ disabled: $ctrl.wishlistPages.currentPage === 0 }" ng-click="$ctrl.changeWishlistView($ctrl.wishlistPages.currentPage - 1)" class="pointer">
+            <a><i class="material-icons">chevron_left</i></a>
+          </li>
+          <li class="waves-effect" ng-class="{ active: $ctrl.wishlistPages.currentPage === page }" ng-repeat="page in $ctrl.wishlistPages.num" ng-click="$ctrl.changeWishlistView(page)">
+            <a>{{page + 1}}</a>
+          </li>
+          <li ng-class="{ disabled: $ctrl.wishlistPages.currentPage === $ctrl.wishlistPages.num.length - 1 }" ng-click="$ctrl.changeWishlistView($ctrl.wishlistPages.currentPage + 1)" class="pointer">
+            <a><i class="material-icons">chevron_right</i></a>
             </li>
-            <li class="waves-effect" ng-class="{ active: $ctrl.wishlistPages.currentPage === page }" ng-repeat="page in $ctrl.wishlistPages.num" ng-click="$ctrl.changeWishlistView(page)">
-              <a>{{page + 1}}</a>
-            </li>
-            <li ng-class="{ disabled: $ctrl.wishlistPages.currentPage === $ctrl.wishlistPages.num.length - 1 }" ng-click="$ctrl.changeWishlistView($ctrl.wishlistPages.currentPage + 1)" class="pointer">
-              <a><i class="material-icons">chevron_right</i></a>
-              </li>
-          </ul>
-        </div>
+        </ul>
       </div>
     </div>
   </div>

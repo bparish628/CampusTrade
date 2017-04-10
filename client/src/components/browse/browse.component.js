@@ -13,7 +13,8 @@ const browseComponent = {
     page = {};
 
     $onInit() {
-      this.originalPosts = this.posts = angular.copy(this.posts);
+      this.posts.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+      this.originalPosts = angular.copy(this.posts);
       this.updatePagination();
     }
     
