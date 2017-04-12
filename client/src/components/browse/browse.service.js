@@ -7,6 +7,10 @@ class BrowseService {
     Object.assign(this, { $trade });
   }
 
+  getPost(id) {
+    return this.$trade.get('posts', { id });
+  }
+
   getPosts() {
     return this.$trade.list('posts');
   }

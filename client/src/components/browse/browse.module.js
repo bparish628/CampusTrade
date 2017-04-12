@@ -1,12 +1,14 @@
 import browseComponent from './browse.component';
 import browseService from './browse.service';
 import browseSearch from './browse-search/browse-search.module';
+import browseView from './browse-view/browse-view.module';
 
 import './browse.scss';
 
 const browse = angular
   .module('components.browse', [
-    browseSearch
+    browseSearch,
+    browseView
   ])
   .component('browse', browseComponent)
   .service('BrowseService', browseService)
