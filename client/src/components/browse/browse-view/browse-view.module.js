@@ -9,7 +9,7 @@ const browseView = angular
     $stateProvider
       .state('browse.view', {
         url: '/:id',
-        template: '<browse-view post="$resolve.posts"></browse-view>',
+        template: '<browse-view post="$resolve.post"></browse-view>',
         resolve: {
           post(BrowseService, $stateParams){
             'ngInject';

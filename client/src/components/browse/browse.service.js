@@ -23,6 +23,13 @@ class BrowseService {
     return this.$trade.list('wishlist', { user: user.id });
   }
 
+  setWishlisted(userId, postId, deleteId) {
+    if (deleteId) {
+      return this.$trade.remove('wishlist', { id: deleteId })
+    }
+    return this.$trade.create('wishlist', { user: userId, post: postId })
+  }
+
   getCategories() {
     return this.$trade.list('categories');
   }
