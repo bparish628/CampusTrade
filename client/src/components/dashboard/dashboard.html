@@ -4,7 +4,7 @@
       <h4 class="blue-grey-text">My Posts</h4>
       <div class="row">
         <div class="col s6" ng-repeat="post in $ctrl.tradePages.displayedPages">
-          <div class="card-panel white lighten-5 hoverable pointer">
+          <div class="card-panel white lighten-5 hoverable pointer" ui-sref="post.edit({ id: post.id })">
             <div class="center">
               <i class="medium material-icons valign">{{::post.category.icon}}</i> 
             </div>

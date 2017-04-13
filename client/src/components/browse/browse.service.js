@@ -38,6 +38,10 @@ class BrowseService {
   createPost(post) {
     return this.$trade.create('posts', post);
   }
+
+  updatePost(post) {
+    return this.$trade.update('posts', post);
+  }
 }
 
 export default BrowseService;

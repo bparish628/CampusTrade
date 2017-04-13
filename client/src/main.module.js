@@ -26,4 +26,13 @@ angular
     $qProvider.errorOnUnhandledRejections(false);
     $locationProvider.hashPrefix('');
     $urlRouterProvider.otherwise('/browse');
+  })
+  .run(($rootScope) => {
+    'ngInject';
+    $rootScope.previousState; 
+    $rootScope.currentState; 
+    $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) { 
+      $rootScope.previousState = from.name; 
+      $rootScope.currentState = to.name;
+    }); 
   });

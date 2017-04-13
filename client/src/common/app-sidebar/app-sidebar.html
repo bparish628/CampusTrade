@@ -16,7 +16,7 @@
       <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">trending_up</i>My Recent Trades</div>
       <div class="collapsible-body">
         <ul>
-          <li ng-repeat="item in $ctrl.tradeItems | orderBy: 'createdAt' :true | limitTo: 5" class="sidebar-item">
+          <li ng-repeat="item in $ctrl.tradeItems | orderBy: 'createdAt' :true | limitTo: 5" class="sidebar-item" ui-sref="post.edit({ id: item.id })">
             <a href="#" class="waves-effect waves-teal">{{item.name}} <span class="right">{{item.price | currency}}</span></a>
           </li>
         </ul>  

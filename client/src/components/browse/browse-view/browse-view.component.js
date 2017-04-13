@@ -6,7 +6,7 @@ const browseViewComponent = {
   },
   template,
   controller: class BrowseViewComponent {
-    constructor(BrowseService, AuthService, $scope) {
+    constructor(BrowseService, AuthService, $scope, $rootScope) {
       'ngInject';
 
       // Need this to watch if a user is logged in
@@ -19,7 +19,7 @@ const browseViewComponent = {
         }
       });
 
-      Object.assign(this, { BrowseService });
+      Object.assign(this, { BrowseService, previousState: $rootScope.previousState });
     }
 
     wishlistItem() {
