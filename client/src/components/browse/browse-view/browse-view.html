@@ -23,7 +23,7 @@
         </div>
         <div class="row remove-margin">
           <hr/>
-          <a class="waves-effect waves-light btn" ui-sref="messages">Message Seller</a>
+          <a class="waves-effect waves-light btn" ui-sref="messages" ng-if="$ctrl.isAuthenticated">Message Seller</a>
           <a class="waves-effect waves-light btn right" ui-sref="^">Go Back</a>
         </div>
       </div>
