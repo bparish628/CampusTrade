@@ -43,7 +43,7 @@ const dashboardComponent = {
         });
       });
       this.$q.all([getPosts, getWishlist]).then(() => {
-        this.tradeItems.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+        this.tradeItems.sort((a,b) => new Date(b.updatedAt) - new Date(a.updatedAt));
         this.wishlistItems.sort((a,b) => new Date(b.post.createdAt) - new Date(a.post.createdAt));
         const tradeNumPages = Math.ceil(this.tradeItems.length / NUMBER_OF_CARDS);
         const wishlistNumPages = Math.ceil(this.wishlistItems.length / NUMBER_OF_CARDS);
