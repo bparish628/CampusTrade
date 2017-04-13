@@ -55,7 +55,7 @@ const dashboardComponent = {
     }
 
     changeTradeView(num = 0){
-      if (num === -1 || num === this.tradePages.num.length) return
+      if (num === -1 || num === this.tradePages.num.length) return;
 
       const end = this.tradeItems.length < num * NUMBER_OF_CARDS + NUMBER_OF_CARDS ? this.tradeItems.length : num * NUMBER_OF_CARDS + NUMBER_OF_CARDS;
       const currentlyViewed = this.tradeItems.slice(num * NUMBER_OF_CARDS, end);
@@ -64,10 +64,9 @@ const dashboardComponent = {
     }
 
     changeWishlistView(num = 0){
-      if (num === -1 || num === this.wishlistPages.num.length) return
-
+      if (num === -1 || num === this.wishlistPages.num.length) return;
       const end = this.wishlistItems.length < num * NUMBER_OF_CARDS + NUMBER_OF_CARDS ? this.wishlistItems.length : num * NUMBER_OF_CARDS + NUMBER_OF_CARDS;
-      const currentlyViewed = this.wishlistItems.slice(num*4, end);
+      const currentlyViewed = this.wishlistItems.slice(num * NUMBER_OF_CARDS, end);
       this.wishlistPages.displayedPages = currentlyViewed;
       this.wishlistPages.currentPage = num;
     }
