@@ -24,6 +24,11 @@ const appSideBarComponent = {
         if (newVal === oldVal) return;
         BrowseService.getUserPosts(AuthService.user).then(posts => (this.tradeItems = posts));
       });
+
+      $scope.$watch(() => BrowseService.addedWishlists, (newVal, oldVal) => {
+        if (newVal === oldVal) return;
+          BrowseService.getWishlist(AuthService.user).then(wishlist => (this.wishlistItems = wishlist));
+      });
     }
   }
 };

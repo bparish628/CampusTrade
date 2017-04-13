@@ -24,9 +24,17 @@ const browseViewComponent = {
 
     wishlistItem() {
       if (this.wishlisted) {
-        this.BrowseService.setWishlisted(this.user.id, this.post.id, this.wishlisted.id).then(wishlist => (this.wishlisted = null));
+        this.BrowseService.setWishlisted(this.user.id, this.post.id, this.wishlisted.id)
+        .then(wishlist => {
+          this.wishlisted = null;
+          this.BrowseService.addedWishlists--;
+        });
       } else {
-        this.BrowseService.setWishlisted(this.user.id, this.post.id).then(wishlist => (this.wishlisted = wishlist));
+        this.BrowseService.setWishlisted(this.user.id, this.post.id)
+          .then(wishlist => {
+            this.wishlisted = wishlist;
+            this.BrowseService.addedWishlists++;
+          });
       }
     }
   }

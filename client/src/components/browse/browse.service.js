@@ -1,6 +1,7 @@
 class BrowseService {
 
   addedPosts = 0;
+  addedWishlists = 0;
   
   constructor($trade) {
     'ngInject';

@@ -26,7 +26,7 @@
       <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">grade</i>Recently Wishlisted</div>
       <div class="collapsible-body">
         <ul>
-          <li ng-repeat="item in $ctrl.wishlistItems | orderBy: 'createdAt' :true | limitTo: 5" class="sidebar-item">
+          <li ng-repeat="item in $ctrl.wishlistItems | orderBy: 'createdAt' :true | limitTo: 5" class="sidebar-item" ui-sref="browse.view({ id: item.post.id })">
             <a href="#" class="waves-effect waves-teal">{{item.post.name}} <span class="right">{{item.post.price | currency}}</span></a>
           </li>
         </ul>  
