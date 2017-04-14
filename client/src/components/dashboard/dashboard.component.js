@@ -38,7 +38,7 @@ const dashboardComponent = {
       const getPosts = this.BrowseService.getUserPosts(this.user).then(posts => {this.tradeItems = posts});
       const getWishlist = this.BrowseService.getWishlist(this.user).then(wishlist => {
         this.wishlistItems = wishlist.map(item => {
-          item.post.category = this.categories.find(category => category.id === item.post.id);
+          item.post.category = this.categories.find(category => category.id === item.post.category);
           return item;
         });
       });
