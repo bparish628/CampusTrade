@@ -3,7 +3,8 @@ import template from './messages-list';
 const messagesListComponent = {
   template,
   bindings: {
-    messages: '<'
+    messages: '<',
+    user: '<'
   },
   controller: class MessagesListComponent {
 

@@ -37,6 +37,10 @@ const browseViewComponent = {
           });
       }
     }
+
+    toggleMessageUser() {
+      this.messageUser = !this.messageUser;
+    }
   }
 };
 

@@ -1,7 +1,10 @@
 import browseViewComponent from './browse-view.component';
+import messagesCreate from './messages-create/messages-create.module';
 
 const browseView = angular
-  .module('components.browse.view', [])
+  .module('components.browse.view', [
+    messagesCreate
+  ])
   .component('browseView', browseViewComponent)
   .config($stateProvider => {
     'ngInject';

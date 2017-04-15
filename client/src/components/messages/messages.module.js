@@ -1,5 +1,6 @@
 import messagesComponent from './messages.component';
 import messagesList from './messages-list/messages-list.module';
+import messagesCreate from './messages-create/messages-create.module';
 import messagesService from './messages.service';
 
 
@@ -15,12 +16,17 @@ const messages = angular
     $stateProvider
       .state('messages', {
         url: '/messages',
-        template: '<messages users="$resolve.users"></messages>',
+        template: '<messages user="$resolve.user"></messages>',
         resolve: {
-          user: (AuthService) => AuthService.current(),
-          users: MessagesService => MessagesService.getUsers()
+          user: (AuthService) => AuthService.current()          
         }
       });
+  })
+  .run($api => {
+    $api.add({
+      resource: 'messages',
+      url: '/user_message'
+    });
   })
   .name;
 

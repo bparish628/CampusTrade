@@ -1,6 +1,16 @@
-<div class="card-panel light-blue lighten-5" ng-repeat="message in $ctrl.messages | orderBy: '+sentTime'">
+<!--<div class="card-panel teal lighten-5" ng-repeat="message in $ctrl.messages | orderBy: 'updatedAt'">
   <p>
-    <strong><center>{{message.sentFrom.name}}</center></strong>
+    <strong><center>{{message.user.firstName}} {{message.user.lastName}}</center></strong>
+    <span class="right">({{message.updatedAt | date : 'medium'}})</span>
   </p>
   {{message.message}}
+</div>-->
+<div class="card card-padding">
+  <div class="row" ng-repeat="message in $ctrl.messages | orderBy: 'updatedAt'">
+    <div class="{{$ctrl.user.id === message.user.id ? 'right' : 'left'}}">
+      <div class="chip {{$ctrl.user.id === message.user.id ? 'blue-grey' : 'teal'}}">
+        <span class="white-text">{{message.message}} <small>({{message.updatedAt | date : 'medium'}})</small></span>
+      </div>
+    </div>
+  </div>
 </div>

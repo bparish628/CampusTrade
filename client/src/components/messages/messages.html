@@ -5,9 +5,9 @@
     <div class="col s3">
       <!-- Contains individual message preview information-->
       <section ng-repeat = "user in $ctrl.users">
-        <a ui-sref="messages.list({id: user.id})">
+        <a ui-sref="messages.list({userId: user.id})">
           <div class="card-panel white">
-            <strong>{{user.name}}</strong> 
+            <strong>{{user.firstName}} {{user.lastName}}</strong> 
             <br/>
           </div>
         </a>
