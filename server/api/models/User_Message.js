@@ -15,9 +15,12 @@ module.exports = {
   },
 
   seedData: [
-    { user: 1, recipient: 2, message: 'Hello!', read: true },
-    { user: 2, recipient: 1, message: 'Sup Dude!', read: true },
-    { user: 1, recipient: 2, message: 'Not much...', read: false },
+    { user: 1, recipient: 2, message: 'Hello!', read: true, updatedAt: '2017-03-30T17:57:51.816Z' },
+    { user: 2, recipient: 1, message: 'Sup Dude!', read: true, updatedAt: '2017-03-31T17:57:51.816Z' },
+    { user: 1, recipient: 2, message: 'Not much...', read: false, updatedAt: '2017-04-01T17:57:51.816Z' },
+    { user: 2, recipient: 3, message: 'Would you pay $65', read: false, updatedAt: '2017-04-01T17:57:51.816Z' },
+    { user: 1, recipient: 3, message: 'its me!', read: false, updatedAt: '2017-04-01T17:57:51.816Z' },
+    { user: 1, recipient: 2, message: 'We should trade!', read: false, updatedAt: '2017-04-01T17:57:51.816Z' },
   ]
 };
 

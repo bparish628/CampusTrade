@@ -9,9 +9,8 @@ const messagesList = angular
     $stateProvider
       .state('messages.list', {
         url: '/:userId',
-        template: '<messages-list messages="$resolve.messages" user="$resolve.user"></messages-list>',
+        template: '<messages-list user="$resolve.user"></messages-list>',
         resolve: {
-          messages: (MessagesService, $stateParams) => MessagesService.getMessages($stateParams.userId),
           user: (AuthService) => AuthService.current()
         }
       });

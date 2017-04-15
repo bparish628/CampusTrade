@@ -3,14 +3,21 @@ import template from './messages-list';
 const messagesListComponent = {
   template,
   bindings: {
-    messages: '<',
     user: '<'
   },
   controller: class MessagesListComponent {
-    constructor(MessagesService) {
+    constructor(MessagesService, $stateParams) {
       'ngInject';
-
+      this.recipientId = $stateParams.userId;
       Object.assign(this, { MessagesService });
+    }
+
+    $onInit() {
+      this.loading = true;
+      this.MessagesService.getMessages(this.user.id, this.recipientId).then(messages => {
+        this.messages = messages;
+        this.loading = false;
+      });
     }
 
     sendMessage() {

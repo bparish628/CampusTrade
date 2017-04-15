@@ -1,25 +1,40 @@
 <div class="card card-padding">
-  <div class="row" ng-repeat="message in $ctrl.messages | orderBy: 'updatedAt'">
-    <div class="{{$ctrl.user.id === message.user.id ? 'right' : 'left'}}">
-      <div class="chip {{$ctrl.user.id === message.user.id ? 'blue-grey' : 'teal'}}">
-        <span class="white-text">{{message.message}} <small>({{message.updatedAt | date : 'medium'}})</small></span>
+  <center ng-if="$ctrl.loading">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <form name="messageForm">
-      <div class="row">
-        <div class="input-field col s7 m8 l10">
-          <input id="message" type="text" ng-model="$ctrl.message.message" required />
-          <label for="message">Message</label>
-        </div>
-        <div class="col s5 m4 l2">
-          <br />
-          <button class="waves-effect waves-light btn teal" ng-click="$ctrl.sendMessage()" ng-disabled="messageForm.$invalid" type="submit">
-            Send
-          </button>
+  </center>
+  <div ng-if="!$ctrl.loading">
+    <div class="row" ng-repeat="message in $ctrl.messages | orderBy: 'updatedAt'">
+      <div class="{{$ctrl.user.id === message.user.id ? 'right' : 'left'}}">
+        <div class="chip {{$ctrl.user.id === message.user.id ? 'blue-grey' : 'teal'}}">
+          <span class="white-text">{{message.message}} <small>({{message.updatedAt | date : 'medium'}})</small></span>
         </div>
       </div>
-    </form>
+    </div>
+    <div class="row">
+      <form name="messageForm">
+        <div class="row">
+          <div class="input-field col s7 m8 l10">
+            <input id="message" type="text" ng-model="$ctrl.message.message" required />
+            <label for="message">Message</label>
+          </div>
+          <div class="col s5 m4 l2">
+            <br />
+            <button class="waves-effect waves-light btn teal" ng-click="$ctrl.sendMessage()" ng-disabled="messageForm.$invalid" type="submit">
+              Send
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
