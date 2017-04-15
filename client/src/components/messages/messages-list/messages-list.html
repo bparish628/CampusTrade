@@ -1,10 +1,3 @@
-<!--<div class="card-panel teal lighten-5" ng-repeat="message in $ctrl.messages | orderBy: 'updatedAt'">
-  <p>
-    <strong><center>{{message.user.firstName}} {{message.user.lastName}}</center></strong>
-    <span class="right">({{message.updatedAt | date : 'medium'}})</span>
-  </p>
-  {{message.message}}
-</div>-->
 <div class="card card-padding">
   <div class="row" ng-repeat="message in $ctrl.messages | orderBy: 'updatedAt'">
     <div class="{{$ctrl.user.id === message.user.id ? 'right' : 'left'}}">
@@ -12,5 +5,21 @@
         <span class="white-text">{{message.message}} <small>({{message.updatedAt | date : 'medium'}})</small></span>
       </div>
     </div>
+  </div>
+  <div class="row">
+    <form name="messageForm">
+      <div class="row">
+        <div class="input-field col s7 m8 l10">
+          <input id="message" type="text" ng-model="$ctrl.message.message" required />
+          <label for="message">Message</label>
+        </div>
+        <div class="col s5 m4 l2">
+          <br />
+          <button class="waves-effect waves-light btn teal" ng-click="$ctrl.sendMessage()" ng-disabled="messageForm.$invalid" type="submit">
+            Send
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

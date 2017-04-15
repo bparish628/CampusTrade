@@ -30,6 +30,10 @@ class MessagesService {
       this.$trade.list('messages', { user: recipientId, recipient: userId })
     ]).then(response => [...response[0], ...response[1]]);
   }
+
+  sendMessage(message) {
+    return this.$trade.create('messages', message);
+  }
 }
 
 export default MessagesService;

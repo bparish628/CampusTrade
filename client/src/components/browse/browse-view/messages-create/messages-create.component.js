@@ -7,10 +7,10 @@ const messagesCreateComponent = {
     recipient: '<'
   },
   controller: class MessagesCreateComponent {
-    constructor($trade) {
+    constructor(MessagesService) {
       'ngInject';
 
-      Object.assign(this, { $trade });
+      Object.assign(this, { MessagesService });
     }
 
     sendMessage() {
@@ -22,7 +22,7 @@ const messagesCreateComponent = {
           recipient: this.recipient.id
         };
 
-        this.$trade.create('messages', this.message).then(() => {
+        this.MessagesService.sendMessage(this.message).then(() => {
           this.message.message = null;
           this.errorMessage = null;
           this.successMessage = 'Message was sent!';
