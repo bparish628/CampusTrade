@@ -5,7 +5,7 @@ const { argv } = require('yargs');
 
 const baseConfig = {
   entry: {
-    app: ['./client/src/main.module.js']
+    app: ['babel-polyfill', './client/src/main.module.js']
   },
 
   output: {

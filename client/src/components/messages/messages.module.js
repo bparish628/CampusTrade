@@ -17,6 +17,7 @@ const messages = angular
         url: '/messages',
         template: '<messages users="$resolve.users"></messages>',
         resolve: {
+          user: (AuthService) => AuthService.current(),
           users: MessagesService => MessagesService.getUsers()
         }
       });

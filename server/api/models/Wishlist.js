@@ -13,7 +13,9 @@ module.exports = {
   },
 
   seedData: [
-    { post: 1, user: 1 }
+    { post: 3, user: 1 },
+    { post: 5, user: 1 },
+    { post: 1, user: 2 }
   ]
 };
 
