@@ -1,17 +1,14 @@
 <div class="container">
-  <h3> Messages </h3>
+  <h3> Messages</h3>
   <div class="row">
     <!-- Left side messages navigation -->
     <div class="col s3">
       <!-- Contains individual message preview information-->
-      <section ng-repeat = "user in $ctrl.users">
-        <a ui-sref="messages.list({userId: user.id})">
-          <div class="card-panel white">
-            <strong class="blue-grey-text">{{user.firstName}} {{user.lastName}}</strong> 
-            <br/>
-          </div>
+      <div class="collection">
+        <a ui-sref="messages.list({userId: user.id})" class="collection-item" ng-repeat="user in $ctrl.users" ng-class="{'active': $ctrl.$stateParams.userId == user.id}">
+          {{user.firstName}} {{user.lastName}}
         </a>
-      </section>
+      </div>
     </div>
     <!-- Right side selected message box -->
     <div class="col s9">

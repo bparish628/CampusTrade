@@ -7,10 +7,10 @@ const messagesComponent = {
   },
   controller: class MessagesComponent {
 
-    constructor(MessagesService) {
+    constructor(MessagesService, $stateParams) {
       'ngInject';
 
-      Object.assign(this, { MessagesService });
+      Object.assign(this, { MessagesService, $stateParams });
     }
 
     $onInit() {
