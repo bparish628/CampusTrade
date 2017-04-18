@@ -12,6 +12,10 @@ module.exports = {
       type: 'string',
       required: true,
       unique: true
+    },
+    icon: {
+      type: 'string',
+      required: true
     }
   },
 

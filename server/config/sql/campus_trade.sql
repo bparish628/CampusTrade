@@ -22,6 +22,7 @@ DROP TABLE IF EXISTS `category`;
 
 CREATE TABLE `category` (
   `name` varchar(255) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL,
@@ -31,16 +32,16 @@ CREATE TABLE `category` (
 
 /*Data for the table `category` */
 
-insert  into `category`(`name`,`id`,`createdAt`,`updatedAt`) values 
-('Books',1,'2017-04-18 14:43:04','2017-04-18 14:43:04'),
-('Electronics',2,'2017-04-18 14:43:04','2017-04-18 14:43:04'),
-('Cell Phones',3,'2017-04-18 14:43:04','2017-04-18 14:43:04'),
-('Computers',4,'2017-04-18 14:43:04','2017-04-18 14:43:04'),
-('Furniture',5,'2017-04-18 14:43:04','2017-04-18 14:43:04'),
-('Clothing',6,'2017-04-18 14:43:04','2017-04-18 14:43:04'),
-('Games',7,'2017-04-18 14:43:04','2017-04-18 14:43:04'),
-('Vehicles',8,'2017-04-18 14:43:04','2017-04-18 14:43:04'),
-('Other',9,'2017-04-18 14:43:04','2017-04-18 14:43:04');
+insert  into `category`(`name`,`icon`,`id`,`createdAt`,`updatedAt`) values 
+('Books','book',1,'2017-04-18 14:59:25','2017-04-18 14:59:25'),
+('Electronics','tv',2,'2017-04-18 14:59:25','2017-04-18 14:59:25'),
+('Cell Phones','smartphone',3,'2017-04-18 14:59:25','2017-04-18 14:59:25'),
+('Computers','computer',4,'2017-04-18 14:59:25','2017-04-18 14:59:25'),
+('Furniture','weekend',5,'2017-04-18 14:59:25','2017-04-18 14:59:25'),
+('Games','videogame_asset',6,'2017-04-18 14:59:25','2017-04-18 14:59:25'),
+('Clothing','watch',7,'2017-04-18 14:59:25','2017-04-18 14:59:25'),
+('Vehicles','motorcycle',8,'2017-04-18 14:59:25','2017-04-18 14:59:25'),
+('Other','local_offer',9,'2017-04-18 14:59:25','2017-04-18 14:59:25');
 
 /*Table structure for table `post` */
 
