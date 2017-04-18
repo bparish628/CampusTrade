@@ -5,7 +5,9 @@
         <div class="card-panel white lighten-5 hoverable">
           <div class="card-panel red lighten-5" ng-show="$ctrl.errorMessage">{{$ctrl.errorMessage}}</div>
           <div class="card-panel green lighten-5" ng-show="$ctrl.successMessage">{{$ctrl.successMessage}}</div>        
-          <h3 class="blue-grey-text">{{$ctrl.isNew ? 'Post new item' : 'Edit Post'}}</h3>
+          <h3 class="blue-grey-text">
+            {{$ctrl.isNew ? 'Post new item' : 'Edit Post'}}
+          </h3>
           <form name="postForm">
             <div class="row">
               <div class="input-field col s6">
@@ -40,7 +42,8 @@
             </div>
             <div class="row">
               <button class="waves-effect waves-light btn right" ng-click="$ctrl.createPost()" ui-sref="{{$ctrl.previousState}}" ng-if="!$ctrl.isNew">Back</button>
-              <button class="waves-effect waves-light btn right margin-right" ng-click="$ctrl.createPost()" ng-disabled="postForm.$invalid" type="submit">{{$ctrl.isNew ? 'Post' : 'Update'}}</button>
+              <button class="waves-effect waves-light btn right margin-right post-button" ng-click="$ctrl.createPost()" ng-disabled="postForm.$invalid" type="submit">{{$ctrl.isNew ? 'Post' : 'Update'}}</button>
+              <button class="waves-effect waves-light btn red right margin-right delete-button" ng-click="$ctrl.deletePost()" ng-if="!$ctrl.isNew">Delete</button>
             </div>
           </form>
         </div>

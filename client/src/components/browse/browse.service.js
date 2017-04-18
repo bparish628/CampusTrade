@@ -42,6 +42,10 @@ class BrowseService {
   updatePost(post) {
     return this.$trade.update('posts', post);
   }
+
+  deletePost(post) {
+    return this.$trade.remove('posts', { id: post.id });
+  }
 }
 
 export default BrowseService;

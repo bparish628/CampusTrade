@@ -25,6 +25,13 @@ To run the web application run the following command
     
 Anytime you make changes to your code and save, your browser will refresh because of `webpack`.
 
+
+## Running Tests
+Be sure that the application is running on your local machine. Then follow these steps:  
+
+1) `npm run start-selenium-server`  
+2) In a different window, run `npm run tests`  
+
 ## Helpful commands
 Be sure to always `git checkout develop && git pull` before creating a new branch for the new feature.
 

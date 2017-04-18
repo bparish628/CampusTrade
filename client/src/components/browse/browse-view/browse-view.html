@@ -4,8 +4,8 @@
       <div class="card-panel white lighten-5 hoverable">
         <h3 class="blue-grey-text">
           <i class="small material-icons">{{::$ctrl.post.category.icon}}</i>
-            {{::$ctrl.post.name}} <i class="small material-icons pointer" ng-click="$ctrl.wishlistItem()" ng-if="$ctrl.isAuthenticated">{{$ctrl.wishlisted ? 'star' : 'star_border'}}</i>
-          <span class="right">{{::$ctrl.post.price | currency}}</span>
+            <span class="post-name">{{::$ctrl.post.name}}</span> <i class="small material-icons pointer" ng-click="$ctrl.wishlistItem()" ng-if="$ctrl.isAuthenticated">{{$ctrl.wishlisted ? 'star' : 'star_border'}}</i>
+          <span class="right post-price">{{::$ctrl.post.price | currency}}</span>
         </h3>
         <div class="row flow-text">
           <div class="col s6">

@@ -7,7 +7,7 @@
       <span class="title"><b>{{::post.name}}</b></span>
       <p>
         Category: {{::post.category.name}}<br>
-        Seller: {{::post.user.firstName}} {{::post.user.lastName}}
+        Seller: <span class="seller">{{::post.user.firstName}} {{::post.user.lastName}}</span>
       </p>
       <p class="secondary-content">
         {{::post.createdAt | date}}<br>

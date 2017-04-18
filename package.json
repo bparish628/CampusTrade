@@ -50,7 +50,9 @@
     "start:prod": "webpack --env=prod -p --config ./webpack.config && (cd server && node app.js)",
     "start": "gulp && node webpack.server.js",
     "start-server": "npm run server-install && node server/app.js",
-    "server-install": "(cd server && npm install)"
+    "server-install": "(cd server && npm install)",
+    "start-selenium-server": "./node_modules/protractor/bin/webdriver-manager update && ./node_modules/protractor/bin/webdriver-manager start",
+    "tests": "./node_modules/protractor/bin/protractor protractor-config.js"
   },
   "main": "app.js",
   "repository": {

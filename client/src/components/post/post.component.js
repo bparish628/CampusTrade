@@ -50,7 +50,20 @@ const postComponent = {
         this.BrowseService.addedPosts++;
       }, () => {
         this.successMessage = null;
-        this.errorMessage = 'There was an item while posting your item.';
+        this.errorMessage = 'There was an error while posting your item.';
+      });
+    }
+
+    deletePost(){
+      this.BrowseService.deletePost(this.post).then(() => {
+        this.errorMessage = null;
+        this.isNew = true;
+        this.successMessage = 'Your item has been successfully deleted.';
+        this.post = { user: this.user.id };
+        this.BrowseService.addedPosts++;
+      }, () => {
+        this.successMessage = null;
+        this.errorMessage = 'There was an error while deleting your item.';
       });
     }
   }
