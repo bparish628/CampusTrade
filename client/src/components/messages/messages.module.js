@@ -1,6 +1,5 @@
 import messagesComponent from './messages.component';
 import messagesList from './messages-list/messages-list.module';
-import messagesCreate from './messages-create/messages-create.module';
 import messagesService from './messages.service';
 
 

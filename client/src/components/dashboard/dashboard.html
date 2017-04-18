@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" ng-if="$ctrl.tradeItems.length">
     <div class="col s12">
-      <h4 class="blue-grey-text">My Posts</h4>
+      <h4 class="blue-grey-text" class="dashboard-posts">My Posts</h4>
       <div class="row">
         <div class="col s6" ng-repeat="post in $ctrl.tradePages.displayedPages">
           <div class="card-panel white lighten-5 hoverable pointer" ui-sref="post.edit({ id: post.id })">
@@ -32,7 +32,7 @@
   </div>
   <div class="row" ng-if="$ctrl.wishlistItems.length">
     <div class="col s12">
-      <h4 class="blue-grey-text">My Wishlist</h4>
+      <h4 class="blue-grey-text" class="dashboard-wishlist">My Wishlist</h4>
       <div class="row">
         <div class="col s6" ng-repeat="item in $ctrl.wishlistPages.displayedPages">
           <div class="card-panel white lighten-5 hoverable pointer" ui-sref="browse.view({ id: item.post.id })">
