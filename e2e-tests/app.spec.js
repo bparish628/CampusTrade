@@ -31,6 +31,43 @@ describe('Dashboard', () => {
   });
 });
 
+describe('Recent Trades', () => {
+  it('should have a list of recent trades', () => {
+    element(by.cssContainingText('li', 'My Recent Trades')).click();
+    browser.sleep(1500);
+    const trades = element.all(by.repeater('item in $ctrl.tradeItems'));
+    expect(trades.count()).toEqual(3);
+  });
+
+  it('should select a recent trades', () => {
+    const trades = element.all(by.repeater('item in $ctrl.tradeItems'));
+    trades.get(0).click();
+    browser.sleep(1500);
+    expect(browser.getCurrentUrl()).toContain("/#/post/");
+    element(by.cssContainingText('div', 'My Recent Trades')).click();
+  });
+});
+
+describe('Recently Wishlisted', () => {
+  it('should have a list of recently wishlisted items', () => {
+    browser.sleep(1500);
+    element(by.cssContainingText('li', 'Recently Wishlisted')).click();
+    browser.sleep(1500);
+    const wishlists = element.all(by.repeater('item in $ctrl.wishlistItems'));
+    expect(wishlists.count()).toEqual(2);
+  });  
+  
+  it('should select a wishlisted item', () => {
+    const wishlists = element.all(by.repeater('item in $ctrl.wishlistItems'));
+    wishlists.get(0).click();
+    browser.sleep(1500);
+    expect(browser.getCurrentUrl()).toContain("/#/browse/");
+    element(by.cssContainingText('div', 'Recently Wishlisted')).click(); 
+  });
+
+
+});
+
 describe('Profile', () => {
   it('should edit the users profile', () => {
     element(by.css('[href="#/profile"]')).click();
@@ -53,6 +90,7 @@ describe('Post', () => {
     element(by.model('$ctrl.post.description')).sendKeys('This is quite the book!');
     browser.sleep(1500);
     element(by.css('.post-button')).click();
+    expect(element(by.css('.card-panel.green')).getText()).toEqual('Your item has been successfully posted.');
     browser.sleep(1500);
   })
 });
@@ -93,6 +131,7 @@ describe('Browse', () => {
     element.all(by.repeater('post in $ctrl.tradePages.displayedPages')).get(0).click();
     browser.sleep(1500);
     element(by.css('.delete-button')).click();
+    expect(element(by.css('.card-panel.green')).getText()).toEqual('Your item has been successfully deleted.');
     browser.sleep(1500);
     element(by.css('[href="#/browse"]')).click();
     const postList = element.all(by.repeater('post in $ctrl.page.displayedPages'));

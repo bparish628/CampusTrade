@@ -27,10 +27,8 @@ Anytime you make changes to your code and save, your browser will refresh becaus
 
 
 ## Running Tests
-Be sure that the application is running on your local machine. Then follow these steps:  
-
-1) `npm run start-selenium-server`  
-2) In a different window, run `npm run tests`  
+To run tests run `npm test`.  
+This will run a reseed and start the application up locally. It will then start up the selenium server and then run the tests in Chrome.
 
 ## Helpful commands
 Be sure to always `git checkout develop && git pull` before creating a new branch for the new feature.

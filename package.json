@@ -53,7 +53,7 @@
     "start-server": "npm run server-install && node server/app.js",
     "server-install": "(cd server && npm install)",
     "start-selenium-server": "./node_modules/protractor/bin/webdriver-manager update && ./node_modules/protractor/bin/webdriver-manager start",
-    "tests": "./node_modules/protractor/bin/protractor protractor-config.js"
+    "test": "./run-tests.sh"
   },
   "main": "app.js",
   "repository": {
