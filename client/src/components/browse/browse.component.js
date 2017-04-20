@@ -1,82 +1,49 @@
 import template from './browse';
 
+const NUMBER_OF_ITEMS = 10;
+
 const browseComponent = {
+  bindings: {
+    posts: '<',
+    categories: '<'
+  },
   template,
   controller: class BrowseComponent {
-    tab = 1; 
 
-    l = [
-        {
-            name: "The Life of Jennifer Lee",
-            edition: "4",
-            author: "Jennifer Lee",
-            type: "textbook",
-            preferences: "I prefer to do the exchange on campus Monday through Friday, 1-5 PM.",
-            asking: 25,
-            images: [ 
-                {
-                    thumb: 'book.jpg',
-                },
-            
-            ],
-            //seller: allUsers[0]; 
-        },
-        {
-            name: "The Life of Tom Lee",
-            edition: "2",
-            author: "Tom Lee",
-            type: "textbook",
-            preferences: "I prefer to do the exchange on campus Monday through Thursday, 1-3 PM.",
-            asking: 25,
-            images: [ 
-                {
-                    thumb: 'book.jpg',
-                },
-            
-            ],
-            //seller= allUsers[1];
-        },
-        {
-            name: "The Life of Brook Lee",
-            edition: "1",
-            author: "Brook Lee",
-            type: "textbook",
-            preferences: "I prefer to do the exchange on campus Monday through Friday, 2-5 PM.",
-            asking: 20,
-            images: [ 
-                {
-                    thumb: 'book.jpg',
-                },
-            
-            ],
-            //seller: allUsers[0]; 
-        },  
-    ];
+    page = {};
 
-    allUsers = [
-        {
-            user: "Bob",
-        },
-        {
-            user: "Paula",
-        },
-        {
-            user: "Mike",
-        },
-        {
-            user: "Dylan",
-        },
-        {
-            user: "Stacy"
-        },
-    ];
-
-    selectTab(setTab){
-        this.tab=setTab;
+    $onInit() {
+      this.posts.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+      this.originalPosts = angular.copy(this.posts);
+      this.updatePagination();
+    }
+    
+    filterResults({ criteria, search }) {
+      if ( criteria.length === 0 ) {
+        this.posts = this.originalPosts;
+      } else {
+        this.posts = this.originalPosts.filter(post => criteria.indexOf(post.category.name) !== -1);
+      }
+      if (search) {
+        this.posts = this.posts.filter(post => post.name.toLowerCase().includes(search.toLowerCase()));
+      }
+      this.updatePagination();
     }
 
-    isSelected(checkTab){
-      return this.tab === checkTab;   
+    updatePagination() {
+      const numPages = Math.ceil(this.posts.length / NUMBER_OF_ITEMS);
+      this.page.num = [...Array(numPages).keys()];
+      this.changeView();
+    }
+
+    changeView(num = 0) {
+      if (num === -1 || num === this.page.num.length) return
+
+      const end = this.posts.length < num * NUMBER_OF_ITEMS + NUMBER_OF_ITEMS ? this.posts.length : num * NUMBER_OF_ITEMS + NUMBER_OF_ITEMS;
+      const currentlyViewed = this.posts.slice(num * NUMBER_OF_ITEMS, end);
+      this.page.displayedPages = currentlyViewed;
+      this.page.currentPage = num;
+      this.page.number
     }
   }
 };

@@ -1,31 +1,20 @@
 <div class="container">
-  <h3> Messages </h3>
+  <h3> Messages</h3>
   <div class="row">
     <!-- Left side messages navigation -->
     <div class="col s3">
       <!-- Contains individual message preview information-->
-      <section ng-repeat = "message in $ctrl.messages | orderBy: '+sentTime'">
-        <a href ng-click="$ctrl.selectMessage($index)">
-          <div class="card-panel white">
-            <strong>{{message.sentFrom}}</strong> 
-            <br/>
-            {{message.message | limitTo: 20}}
-            <br/>
-            {{message.sentTime | date:"MM.dd.yyyy 'at' h:mma" : timezone}}
-          </div>
+      <div class="collection">
+        <a ui-sref="messages.list({userId: user.id})" class="collection-item" ng-repeat="user in $ctrl.users" ng-class="{'active': $ctrl.$stateParams.userId == user.id}">
+          {{user.firstName}} {{user.lastName}}
         </a>
-      </section>
+      </div>
     </div>
     <!-- Right side selected message box -->
-
     <div class="col s9">
       <section>
-        <div class="card-panel light-blue lighten-5">
-          <p><strong><center>{{$ctrl.messages[$ctrl.viewMessage].sentFrom}}</center></strong></p>
-          {{$ctrl.messages[$ctrl.viewMessage].message}}
-        </div>
+        <div ui-view></div>
       </section>
     </div>
-
   </div>
 </div>

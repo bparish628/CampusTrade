@@ -19,12 +19,20 @@ angular
     common
   ])
   .component('main', mainComponent)
-  .config(($locationProvider, $urlRouterProvider) => {
+  .config(($locationProvider, $urlRouterProvider, $qProvider) => {
     'ngInject';
 
+    // Turn off rejection of promise errors
+    $qProvider.errorOnUnhandledRejections(false);
     $locationProvider.hashPrefix('');
     $urlRouterProvider.otherwise('/browse');
   })
-  .run((AuthService) => {
-    AuthService.current();
+  .run(($rootScope) => {
+    'ngInject';
+    $rootScope.previousState; 
+    $rootScope.currentState; 
+    $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) { 
+      $rootScope.previousState = from.name; 
+      $rootScope.currentState = to.name;
+    }); 
   });

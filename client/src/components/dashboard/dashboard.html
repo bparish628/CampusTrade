@@ -1,1 +1,65 @@
-Dashboard!
+<div class="container">
+  <div class="row" ng-if="$ctrl.tradeItems.length">
+    <div class="col s12">
+      <h4 class="blue-grey-text" class="dashboard-posts">My Posts</h4>
+      <div class="row">
+        <div class="col s6" ng-repeat="post in $ctrl.tradePages.displayedPages">
+          <div class="card-panel white lighten-5 hoverable pointer" ui-sref="post.edit({ id: post.id })">
+            <div class="center">
+              <i class="medium material-icons valign">{{::post.category.icon}}</i> 
+            </div>
+            <hr />
+            <p>Category: <b>{{::post.category.name}}</b></p>
+            <p>{{::post.name}} <span class="right">{{::post.price | currency}}<span></p>
+            <p>{{::post.description}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="center" ng-if="$ctrl.tradePages.num.length > 1">
+        <ul class="pagination">
+          <li ng-class="{ disabled: $ctrl.tradePages.currentPage === 0 }" ng-click="$ctrl.changeTradeView($ctrl.tradePages.currentPage - 1)" class="pointer">
+            <a><i class="material-icons">chevron_left</i></a>
+          </li>
+          <li class="waves-effect" ng-class="{ active: $ctrl.tradePages.currentPage === page }" ng-repeat="page in $ctrl.tradePages.num" ng-click="$ctrl.changeTradeView(page)">
+            <a>{{page + 1}}</a>
+          </li>
+          <li ng-class="{ disabled: $ctrl.tradePages.currentPage === $ctrl.tradePages.num.length - 1 }" ng-click="$ctrl.changeTradeView($ctrl.tradePages.currentPage + 1)" class="pointer">
+            <a><i class="material-icons">chevron_right</i></a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-if="$ctrl.wishlistItems.length">
+    <div class="col s12">
+      <h4 class="blue-grey-text" class="dashboard-wishlist">My Wishlist</h4>
+      <div class="row">
+        <div class="col s6" ng-repeat="item in $ctrl.wishlistPages.displayedPages">
+          <div class="card-panel white lighten-5 hoverable pointer" ui-sref="browse.view({ id: item.post.id })">
+            <div class="center">
+              <i class="medium material-icons valign">{{::item.post.category.icon}}</i> 
+            </div>
+            <hr />
+            <p>Category: <b>{{::item.post.category.name}}</b></p>
+            <p><span class="post-name">{{::item.post.name}}</span> <span class="right">{{::item.post.price | currency}}<span></p>
+            <p>{{::item.post.description}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="center"ng-if="$ctrl.wishlistPages.num.length > 1">
+        <ul class="pagination">
+          <li ng-class="{ disabled: $ctrl.wishlistPages.currentPage === 0 }" ng-click="$ctrl.changeWishlistView($ctrl.wishlistPages.currentPage - 1)" class="pointer">
+            <a><i class="material-icons">chevron_left</i></a>
+          </li>
+          <li class="waves-effect" ng-class="{ active: $ctrl.wishlistPages.currentPage === page }" ng-repeat="page in $ctrl.wishlistPages.num" ng-click="$ctrl.changeWishlistView(page)">
+            <a>{{page + 1}}</a>
+          </li>
+          <li ng-class="{ disabled: $ctrl.wishlistPages.currentPage === $ctrl.wishlistPages.num.length - 1 }" ng-click="$ctrl.changeWishlistView($ctrl.wishlistPages.currentPage + 1)" class="pointer">
+            <a><i class="material-icons">chevron_right</i></a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

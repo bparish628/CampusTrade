@@ -1,0 +1,22 @@
+<div class="container card-margin">
+  <div class="row">
+    <div class="col s12">
+      <div class="card-panel white lighten-5 hoverable">
+        <div class="card-panel red lighten-5" ng-show="$ctrl.errorMessage">{{$ctrl.errorMessage}}</div>
+        <div class="card-panel green lighten-5" ng-show="$ctrl.successMessage">{{$ctrl.successMessage}}</div>        
+        <form name="messageForm">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">mail</i>
+              <textarea id="message" class="materialize-textarea" ng-model="$ctrl.message.message" required></textarea>
+              <label for="message">Message</label>
+            </div>
+          </div>
+          <div class="row">
+            <button class="waves-effect waves-light btn right" ng-click="$ctrl.sendMessage()" ng-disabled="messageForm.$invalid" type="submit">Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

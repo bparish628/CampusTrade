@@ -1,5 +1,5 @@
 <ul id="slide-out" class="side-nav fixed">
-  <li ui-sref="auth.login" ng-if="!$ctrl.isAuthenticated">
+  <li ui-sref="auth.login" ng-if="!$ctrl.isAuthenticated" class="login">
     <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">fingerprint</i>Log In</div>
   </li>
   <li ui-sref="auth.register" ng-if="!$ctrl.isAuthenticated">
@@ -12,21 +12,28 @@
     <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">explore</i>Browse</div>
   </li>
   <ul class="collapsible" data-collapsible="expandable" ng-if="$ctrl.isAuthenticated">
-    <li>
-      <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">trending_up</i>My Trades</div>
+    <li ng-if="$ctrl.tradeItems.length">
+      <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">trending_up</i>My Recent Trades</div>
       <div class="collapsible-body">
         <ul>
-          <li ng-repeat="item in $ctrl.tradeItems" class="sidebar-item"><a href="#" class="waves-effect waves-teal">{{item.name}}</a></li>
+          <li ng-repeat="item in $ctrl.tradeItems | orderBy: 'updatedAt' :true | limitTo: 5" class="sidebar-item" ui-sref="post.edit({ id: item.id })">
+            <a href="#" class="waves-effect waves-teal">{{item.name}} <span class="right">{{item.price | currency}}</span></a>
+          </li>
         </ul>  
       </div>
     </li>
-    <li>
-      <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">grade</i>My Wishlist</div>
+    <li ng-if="$ctrl.wishlistItems.length">
+      <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">grade</i>Recently Wishlisted</div>
       <div class="collapsible-body">
         <ul>
-          <li ng-repeat="item in $ctrl.wishlistItems" class="sidebar-item"><a href="#" class="waves-effect waves-teal">{{item.name}}</a></li>
+          <li ng-repeat="item in $ctrl.wishlistItems | orderBy: 'createdAt' :true | limitTo: 5" class="sidebar-item" ui-sref="browse.view({ id: item.post.id })">
+            <a href="#" class="waves-effect waves-teal">{{item.post.name}} <span class="right">{{item.post.price | currency}}</span></a>
+          </li>
         </ul>  
       </div>
     </li>
   </ul>
+  <li ui-sref="post" ng-if="$ctrl.isAuthenticated">
+    <div class="collapsible-header waves-effect waves-teal"><i class="material-icons">add</i>Post Item</div>
+  </li>
 </ul>

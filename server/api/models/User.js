@@ -11,10 +11,16 @@ module.exports = {
     email: { unique: true, type: 'email', required: true},
     password: { type: 'string', required: true },
     firstName: { type: 'string', required: true },
-    lastName: { type: 'string', required: true }
+    lastName: { type: 'string', required: true },
     // dateOfBirth: { type: 'string', required: true }
-  },
 
+    // Override toJSON instance method to remove password value
+    toJSON: function() {
+      var obj = this.toObject();
+      delete obj.password;
+      return obj;
+    }
+  },
   
   register: function (inputs, cb) {
     User.create({
@@ -32,6 +38,12 @@ module.exports = {
       password: inputs.password
     })
     .exec(cb);
-  }
+  },
+
+  seedData: [
+    { email: 'test@test.com', password: 'password', firstName: 'Test', lastName: 'User' },
+    { email: 'johndoe@campustrade.com', password: 'password', firstName: 'John', lastName: 'Doe' },
+    { email: 'bobross@campustrade.com', password: 'password', firstName: 'Bob', lastName: 'Ross' }
+  ]
 };
 

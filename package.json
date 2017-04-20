@@ -19,11 +19,12 @@
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-plugin-angularjs-annotate": "^0.7.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-class-properties": "^6.22.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.22.0",
-    "babel-polyfill": "^6.22.0",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.22.0",
     "css-loader": "^0.26.1",
     "del": "^2.2.2",
@@ -36,6 +37,7 @@
     "jquery": "^3.1.0",
     "node-sass": "4.5.0",
     "progress-bar-webpack-plugin": "^1.9.3",
+    "protractor": "5.1.1",
     "sass-loader": "6.0.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
@@ -49,7 +51,9 @@
     "start:prod": "webpack --env=prod -p --config ./webpack.config && (cd server && node app.js)",
     "start": "gulp && node webpack.server.js",
     "start-server": "npm run server-install && node server/app.js",
-    "server-install": "(cd server && npm install)"
+    "server-install": "(cd server && npm install)",
+    "start-selenium-server": "./node_modules/protractor/bin/webdriver-manager update && ./node_modules/protractor/bin/webdriver-manager start",
+    "test": "./run-tests.sh"
   },
   "main": "app.js",
   "repository": {
